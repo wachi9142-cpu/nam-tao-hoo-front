@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
@@ -27,7 +28,13 @@ export default function HerbalPage() {
             key={d.name}
             className="flex min-w-0 items-center gap-4 rounded-3xl bg-milk p-4 ring-1 ring-bean/50 transition hover:-translate-y-0.5 hover:shadow-md md:p-5"
           >
-            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-leaf/15 text-3xl">{d.emoji}</span>
+            <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full bg-leaf/15 text-3xl">
+              {d.image ? (
+                <Image src={d.image} alt={d.name} width={56} height={56} className="h-full w-full object-cover" />
+              ) : (
+                d.emoji
+              )}
+            </span>
             <div className="min-w-0 flex-1">
               <p className="font-display font-bold text-cocoa md:text-lg">{d.name}</p>
               <p className="text-xs text-cocoa/65">{d.benefit}</p>
