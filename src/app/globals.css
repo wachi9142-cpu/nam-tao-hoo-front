@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  /* Pumpkin & Melon palette */
+  --cream: #fff4dc;
+  --milk: #fffdf5;
+  --bean: #e8c89b;
+  --pumpkin: #a9784f;
+  --cocoa: #45372f;
+  --sky: #6fa8dc;
+  --sky-deep: #4f8fc9;
+  --blush: #d8a9a1;
+  --leaf: #708653;
+  --honey: #d9a85e;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-milk: var(--milk);
+  --color-bean: var(--bean);
+  --color-pumpkin: var(--pumpkin);
+  --color-cocoa: var(--cocoa);
+  --color-sky: var(--sky);
+  --color-sky-deep: var(--sky-deep);
+  --color-blush: var(--blush);
+  --color-leaf: var(--leaf);
+  --color-honey: var(--honey);
+  --font-display: var(--font-mali);
+  --font-sans: var(--font-noto-thai);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+body {
+  background: var(--cream);
+  color: var(--cocoa);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--r, 0deg)); }
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
