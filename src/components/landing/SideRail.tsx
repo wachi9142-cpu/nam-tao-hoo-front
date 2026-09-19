@@ -4,6 +4,7 @@ const links = [
   { href: "/#location", icon: "📍", label: "ร้านอยู่ที่ไหน" },
   { href: "/#reviews", icon: "⭐", label: "รีวิว" },
   { href: "/#photos", icon: "📸", label: "รูปลูกค้า" },
+  { href: "/#nearby", icon: "🗺️", label: "ร้านใกล้ ๆ" },
 ];
 
 // Floating quick-nav pinned to the right edge (desktop) / bottom (mobile)

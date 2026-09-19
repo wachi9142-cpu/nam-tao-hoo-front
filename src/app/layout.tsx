@@ -22,7 +22,7 @@ const notoThai = Noto_Sans_Thai({
 export const metadata: Metadata = {
   title: "Pumpkin&Melone Soy Milk — น้ำเต้าหู้บ้าน ๆ จากความตั้งใจของแม่",
   description:
-    "น้ำเต้าหู้สดใหม่ทุกเช้า ทำตั้งแต่ตี 3–4 เปิดจันทร์–เสาร์ 05:00–09:00 น. ซื้อที่หน้าร้านเท่านั้น",
+    "น้ำเต้าหู้สดใหม่ทุกเช้า ทำตั้งแต่ตี 3–4 เปิดจันทร์–เสาร์ 05:30–09:00 น. ซื้อที่หน้าร้านเท่านั้น",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

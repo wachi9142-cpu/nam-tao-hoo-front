@@ -9,18 +9,18 @@ export const site = {
   // TODO: put the shop chat link here (e.g. LINE https://line.me/ti/p/xxxx or Facebook Messenger)
   chatUrl: "",
   chatLabel: "LINE / Facebook",
-  open: "05:00",
+  open: "05:30",
   close: "09:00",
   closedDay: 0, // Sunday
 };
 
 export const weekHours = [
-  { day: "จันทร์", time: "05:00 – 09:00" },
-  { day: "อังคาร", time: "05:00 – 09:00" },
-  { day: "พุธ", time: "05:00 – 09:00" },
-  { day: "พฤหัสบดี", time: "05:00 – 09:00" },
-  { day: "ศุกร์", time: "05:00 – 09:00" },
-  { day: "เสาร์", time: "05:00 – 09:00" },
+  { day: "จันทร์", time: "05:30 – 09:00" },
+  { day: "อังคาร", time: "05:30 – 09:00" },
+  { day: "พุธ", time: "05:30 – 09:00" },
+  { day: "พฤหัสบดี", time: "05:30 – 09:00" },
+  { day: "ศุกร์", time: "05:30 – 09:00" },
+  { day: "เสาร์", time: "05:30 – 09:00" },
   { day: "อาทิตย์", time: "ปิด", closed: true },
 ];
 
@@ -57,9 +57,8 @@ export const menu: MenuCategory[] = [
 export const sweetness = ["ไม่ใส่น้ำตาล", "หวานน้อย", "หวานปกติ"];
 
 export const nearbyShops = [
-  { name: "ร้านกาแฟหน้าปากซอย", distance: "350 ม.", rating: 4.8, type: "🥤 เครื่องดื่ม" },
-  { name: "ก๋วยจั๊บป้าแดง", distance: "700 ม.", rating: 4.6, type: "🍜 อาหารเช้า" },
-  { name: "เบเกอรี่บ้านขนม", distance: "1.2 กม.", rating: 4.7, type: "🍞 เบเกอรี่" },
+  { name: "หมูปิ้งวิริญา", distance: "ใกล้ร้าน", rating: 4.8, type: "🍢 หมูปิ้ง / อาหารเช้า" },
+  { name: "ข้าวราดแกงป้ามน", distance: "ใกล้ร้าน", rating: 4.7, type: "🍛 ข้าวราดแกง" },
 ];
 
 export type Review = {

@@ -39,7 +39,7 @@ export default function HerbalPage() {
               <p className="font-display font-bold text-cocoa md:text-lg">{d.name}</p>
               <p className="text-xs text-cocoa/65">{d.benefit}</p>
             </div>
-            <p className="font-display shrink-0 text-xl font-bold text-pumpkin">฿{d.price}</p>
+            <p className="font-display shrink-0 text-xl font-bold text-pumpkin">{d.price} <span className="text-sm font-semibold">บาท</span></p>
           </div>
         ))}
       </div>

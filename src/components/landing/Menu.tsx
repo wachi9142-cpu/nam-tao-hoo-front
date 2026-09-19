@@ -25,7 +25,7 @@ export function Menu() {
                       </p>
                       {it.note && <p className="text-xs text-cocoa/60">{it.note}</p>}
                     </div>
-                    <p className="font-display shrink-0 text-lg font-bold text-pumpkin">฿{it.price}</p>
+                    <p className="font-display shrink-0 text-lg font-bold text-pumpkin">{it.price} <span className="text-sm font-semibold">บาท</span></p>
                   </li>
                 ))}
               </ul>

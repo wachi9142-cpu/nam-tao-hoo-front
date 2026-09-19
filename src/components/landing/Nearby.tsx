@@ -8,7 +8,7 @@ export function Nearby() {
         <SectionTitle sub="พื้นที่แนะนำร้านในชุมชน — แวะร้านแม่แล้วไปต่อร้านข้าง ๆ ได้เลย">
           🗺️ ร้านน่าสนใจใกล้ Pumpkin&amp;Melone
         </SectionTitle>
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2">
           {nearbyShops.map((s) => (
             <a
               key={s.name}

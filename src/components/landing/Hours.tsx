@@ -5,8 +5,8 @@ export function Hours() {
     <section id="hours" className="mx-auto max-w-6xl px-4 py-20">
       <div className="mx-auto max-w-lg overflow-hidden rounded-[2rem] bg-milk shadow-xl ring-4 ring-sky/30">
         <div className="bg-sky px-6 py-5 text-center text-white">
-          <p className="font-display text-2xl font-bold">🌅 เปิดตั้งแต่ตี 5</p>
-          <p className="text-sm text-white/90">เปิดทุกวันจันทร์–เสาร์ • 05:00 – 09:00 น.</p>
+          <p className="font-display text-2xl font-bold">🌅 เปิดตั้งแต่ตี 5 ครึ่ง</p>
+          <p className="text-sm text-white/90">เปิดทุกวันจันทร์–เสาร์ • 05:30 – 09:00 น.</p>
         </div>
         <table className="w-full text-sm">
           <tbody>

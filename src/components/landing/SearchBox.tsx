@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { grocery, herbalDrinks, menu } from "@/data/site";
+import { grocery, herbalDrinks, menu, nearbyShops } from "@/data/site";
 
 type Hit = { label: string; sub: string; href: string; emoji: string };
 
@@ -10,15 +10,17 @@ type Hit = { label: string; sub: string; href: string; emoji: string };
 const index: Hit[] = [
   { label: "หน้าแรก", sub: "หน้าแรกของร้าน", href: "/", emoji: "🏠" },
   { label: "เกี่ยวกับร้าน", sub: "เรื่องราวของแม่", href: "/#about", emoji: "💙" },
-  { label: "เวลาเปิด–ปิด", sub: "จันทร์–เสาร์ 05:00–09:00", href: "/#hours", emoji: "🕔" },
+  { label: "เวลาเปิด–ปิด", sub: "จันทร์–เสาร์ 05:30–09:00", href: "/#hours", emoji: "🕔" },
   { label: "ติดต่อเรา / แผนที่", sub: "ที่อยู่ โทร แผนที่", href: "/#location", emoji: "📍" },
   { label: "รีวิว", sub: "รีวิวจากลูกค้า", href: "/#reviews", emoji: "⭐" },
   { label: "รูปลูกค้า", sub: "แกลเลอรีจากลูกค้า", href: "/#photos", emoji: "📸" },
   { label: "เช็กอิน", sub: "ฉันมาถึงร้านแล้ว", href: "/#checkin", emoji: "📍" },
   { label: "วิของชำ", sub: "ร้านของชำของครอบครัว", href: "/grocery", emoji: "🛒" },
   { label: "น้ำสมุนไพรโฮมเมด", sub: "แม่ทำเอง มีตามวัน", href: "/herbal", emoji: "🌿" },
-  ...menu.flatMap((c) => c.items.map((i) => ({ label: i.name, sub: `${c.title} • ฿${i.price}`, href: "/#menu", emoji: c.emoji }))),
-  ...herbalDrinks.map((d) => ({ label: d.name, sub: `น้ำสมุนไพร • ฿${d.price}`, href: "/herbal", emoji: d.emoji })),
+  ...menu.flatMap((c) => c.items.map((i) => ({ label: i.name, sub: `${c.title} • ${i.price} บาท`, href: "/#menu", emoji: c.emoji }))),
+  ...herbalDrinks.map((d) => ({ label: d.name, sub: `น้ำสมุนไพร • ${d.price} บาท`, href: "/herbal", emoji: d.emoji })),
+  { label: "ร้านใกล้ ๆ", sub: "ร้านน่าสนใจใกล้ Pumpkin&Melone", href: "/#nearby", emoji: "🗺️" },
+  ...nearbyShops.map((n) => ({ label: n.name, sub: `ร้านใกล้ ๆ • ${n.type}`, href: "/#nearby", emoji: n.type.split(" ")[0] })),
   ...grocery.flatMap((c) => c.items.map((i) => ({ label: i, sub: `วิของชำ • ${c.title}`, href: "/grocery", emoji: c.emoji }))),
 ];
 
