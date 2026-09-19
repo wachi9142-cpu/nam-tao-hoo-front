@@ -42,7 +42,19 @@ export default function GroceryPage() {
         ))}
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-6 flex flex-col gap-3 rounded-3xl bg-leaf/15 p-6 ring-1 ring-leaf/40 sm:flex-row sm:items-center">
+        <span className="text-4xl">🪙</span>
+        <div className="flex-1">
+          <p className="font-display text-lg font-bold text-cocoa">🤝 จุดแลกเหรียญ 10 บาท</p>
+          <p className="text-sm text-cocoa/80">
+            สำหรับเครื่องซักผ้าหยอดเหรียญของ <Link href="/nearby/wiriya" className="font-semibold text-sky-deep underline">ร้านหมูปิ้งวิริญา</Link> ข้างร้าน — นำเงินมาแลกเหรียญได้ที่นี่เลย
+          </p>
+          <p className="mt-1 text-sm font-semibold text-cocoa">🕠 รับแลกเหรียญ 05:30–21:00 น.</p>
+          <p className="text-xs text-cocoa/60">⚠️ เครื่องซักผ้าเปิด 24 ชม. แต่แลกเหรียญได้เฉพาะช่วงที่ร้านเปิด</p>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
         <div className="rounded-3xl bg-honey/20 p-6 ring-1 ring-honey/50">
           <p className="font-display text-lg font-bold text-cocoa">🔎 มีสินค้าที่ต้องการไหม? โทรสอบถามได้เลย</p>
           <a href={`tel:${site.phone}`} className="mt-3 inline-block rounded-full bg-sky px-5 py-3 font-semibold text-white hover:bg-sky-deep">

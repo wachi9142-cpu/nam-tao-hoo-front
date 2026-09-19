@@ -48,6 +48,8 @@ body {
 
 .font-display {
   font-family: var(--font-display), var(--font-sans), sans-serif;
+  /* Thai upper vowels/tone marks need extra line height so they never touch the line above */
+  line-height: 1.45;
 }
 
 @keyframes float {

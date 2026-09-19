@@ -59,6 +59,15 @@ export const sweetness = ["ไม่ใส่น้ำตาล", "หวาน�
 export type NearbyProduct = { name: string; price: number; unit: string; image?: string };
 export type NearbyPhoto = { src: string; caption: string };
 
+export type NearbyService = {
+  title: string;
+  emoji: string;
+  badge?: string;
+  details: string[];
+  // where/when customers can get coins for the machine
+  coinExchange?: { place: string; href: string; hours: string; warning: string };
+};
+
 export type NearbyShop = {
   slug: string;
   name: string;
@@ -69,6 +78,8 @@ export type NearbyShop = {
   details: string[];
   note?: string;
   products: NearbyProduct[];
+  // extra services besides food (e.g. coin laundry)
+  services?: NearbyService[];
   // real photos only — leave empty until we have them (no AI stand-ins)
   photos: NearbyPhoto[];
   // optional overrides; default = same spot as our shop (they are next door)
@@ -102,8 +113,8 @@ export const nearbyShops: NearbyShop[] = [
     slug: "wiriya",
     name: "ร้านหมูปิ้งวิริญา",
     emoji: "🍢",
-    type: "หมูปิ้ง / อาหารเช้า",
-    tagline: "หมูปิ้งร้อน ๆ ขายช่วงเช้า",
+    type: "หมูปิ้ง / เครื่องซักผ้าหยอดเหรียญ",
+    tagline: "หมูปิ้งร้อน ๆ ขายช่วงเช้า และมีเครื่องซักผ้าหยอดเหรียญให้บริการ",
     location: "ข้างบ้าน ติดกับหมู่บ้าน/ซอยประเสริฐสุข",
     details: [
       "🕟 เริ่มขายประมาณ 04:30 น.",
@@ -113,6 +124,20 @@ export const nearbyShops: NearbyShop[] = [
     products: [
       { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้" },
       { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ" },
+    ],
+    services: [
+      {
+        title: "เครื่องซักผ้าหยอดเหรียญ",
+        emoji: "🧺",
+        badge: "🤝 จุดแลกเหรียญ: วิของชำ",
+        details: ["🟢 เปิด 24 ชั่วโมง", "💰 เริ่มต้น 30 บาท", "🪙 ใช้เหรียญ 10 บาทในการหยอดเครื่อง"],
+        coinExchange: {
+          place: "วิของชำ",
+          href: "/grocery",
+          hours: "05:30–21:00 น.",
+          warning: "แลกเหรียญได้เฉพาะช่วงที่ร้านวิของชำเปิด — เครื่องซักผ้าเปิด 24 ชม. แต่หากร้านวิของชำปิด จะไม่สามารถแลกเหรียญที่ร้านได้",
+        },
+      },
     ],
     photos: [],
   },

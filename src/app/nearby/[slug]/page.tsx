@@ -50,9 +50,9 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
       <header className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
         <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-honey/25 text-5xl">{shop.emoji}</span>
         <div className="min-w-0">
-          <p className="text-xs font-semibold text-cocoa/60">ร้านใกล้เคียง • {shop.type}</p>
+          <p className="mb-2 text-xs font-semibold text-cocoa/60">ร้านใกล้เคียง • {shop.type}</p>
           <h1 className="font-display text-3xl font-bold text-cocoa md:text-4xl">{shop.name}</h1>
-          <p className="mt-1 text-cocoa/80">{shop.tagline}</p>
+          <p className="mt-2 text-cocoa/80">{shop.tagline}</p>
         </div>
       </header>
 
@@ -132,6 +132,43 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
           ))}
         </div>
       </section>
+
+      {/* services */}
+      {shop.services?.map((sv) => (
+        <section key={sv.title} className="mt-8 rounded-3xl bg-leaf/15 p-6 ring-1 ring-leaf/40">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-display text-xl font-bold text-pumpkin">
+              {sv.emoji} {sv.title}
+            </h2>
+            {sv.badge && (
+              <span className="rounded-full bg-honey/40 px-3 py-1 text-xs font-semibold text-cocoa ring-1 ring-honey/60">{sv.badge}</span>
+            )}
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl bg-milk p-4 ring-1 ring-bean/50">
+              <p className="font-display font-bold text-cocoa">{sv.emoji} เครื่องซักผ้า</p>
+              <ul className="mt-2 space-y-1.5 text-sm text-cocoa/85">
+                {sv.details.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
+            </div>
+            {sv.coinExchange && (
+              <div className="rounded-2xl bg-milk p-4 ring-1 ring-bean/50">
+                <p className="font-display font-bold text-cocoa">🪙 จุดแลกเหรียญ 10 บาท</p>
+                <ul className="mt-2 space-y-1.5 text-sm text-cocoa/85">
+                  <li>
+                    📍 <Link href={sv.coinExchange.href} className="font-semibold text-sky-deep underline">{sv.coinExchange.place}</Link> (ร้านของแม่ ข้างร้าน)
+                  </li>
+                  <li>🕠 {sv.coinExchange.hours}</li>
+                </ul>
+                <p className="mt-2 rounded-xl bg-blush/20 px-3 py-2 text-xs leading-relaxed text-cocoa/80">⚠️ {sv.coinExchange.warning}</p>
+              </div>
+            )}
+          </div>
+          <p className="mt-3 text-xs text-cocoa/60">🤝 ร้านหมูปิ้งวิริญาและวิของชำอยู่ใกล้กันและช่วยอำนวยความสะดวกให้กัน</p>
+        </section>
+      ))}
 
       {/* details */}
       <section className="mt-8 grid gap-4 md:grid-cols-2">

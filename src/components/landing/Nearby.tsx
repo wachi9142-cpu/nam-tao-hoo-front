@@ -24,6 +24,11 @@ export function Nearby() {
                 </div>
               </div>
               <p className="mt-3 text-sm text-cocoa/80">{s.tagline}</p>
+              {s.services?.map((sv) => sv.badge && (
+                <span key={sv.title} className="mt-2 inline-block w-fit rounded-full bg-honey/40 px-3 py-1 text-xs font-semibold text-cocoa ring-1 ring-honey/60">
+                  {sv.badge}
+                </span>
+              ))}
               <ul className="mt-3 flex-1 space-y-1.5 text-sm text-cocoa/85">
                 <li>📍 {s.location}</li>
                 {s.details.slice(0, 2).map((d) => (
