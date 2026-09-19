@@ -20,7 +20,7 @@ const index: Hit[] = [
   ...menu.flatMap((c) => c.items.map((i) => ({ label: i.name, sub: `${c.title} • ${i.price} บาท`, href: "/#menu", emoji: c.emoji }))),
   ...herbalDrinks.map((d) => ({ label: d.name, sub: `น้ำสมุนไพร • ${d.price} บาท`, href: "/herbal", emoji: d.emoji })),
   { label: "ร้านใกล้ ๆ", sub: "ร้านน่าสนใจใกล้ Pumpkin&Melone", href: "/#nearby", emoji: "🗺️" },
-  ...nearbyShops.map((n) => ({ label: n.name, sub: `ร้านใกล้ ๆ • ${n.type}`, href: "/#nearby", emoji: n.type.split(" ")[0] })),
+  ...nearbyShops.map((n) => ({ label: n.name, sub: `ร้านใกล้เคียง • ${n.type}`, href: `/nearby/${n.slug}`, emoji: n.emoji })),
   ...grocery.flatMap((c) => c.items.map((i) => ({ label: i, sub: `วิของชำ • ${c.title}`, href: "/grocery", emoji: c.emoji }))),
 ];
 

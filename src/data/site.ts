@@ -3,7 +3,7 @@ export const site = {
   tagline: "น้ำเต้าหู้บ้าน ๆ จากความตั้งใจของแม่",
   phone: "0959375014",
   phoneDisplay: "095-937-5014",
-  address: "220/11 ซ. ลาดกระบัง 7 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520",
+  address: "220/11 วิของชำ ซ. ลาดกระบัง 7 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520",
   mapsUrl: "https://maps.app.goo.gl/7V3KssWFJXyhYwPL8",
   mapsEmbed: "https://www.google.com/maps?q=220/11+ซ.+ลาดกระบัง+7+แขวงลาดกระบัง+เขตลาดกระบัง+กรุงเทพมหานคร+10520&output=embed",
   // TODO: put the shop chat link here (e.g. LINE https://line.me/ti/p/xxxx or Facebook Messenger)
@@ -56,9 +56,66 @@ export const menu: MenuCategory[] = [
 
 export const sweetness = ["ไม่ใส่น้ำตาล", "หวานน้อย", "หวานปกติ"];
 
-export const nearbyShops = [
-  { name: "หมูปิ้งวิริญา", distance: "ใกล้ร้าน", rating: 4.8, type: "🍢 หมูปิ้ง / อาหารเช้า" },
-  { name: "ข้าวราดแกงป้ามน", distance: "ใกล้ร้าน", rating: 4.7, type: "🍛 ข้าวราดแกง" },
+export type NearbyProduct = { name: string; price: number; unit: string; image?: string };
+export type NearbyPhoto = { src: string; caption: string };
+
+export type NearbyShop = {
+  slug: string;
+  name: string;
+  emoji: string;
+  type: string;
+  tagline: string;
+  location: string;
+  details: string[];
+  note?: string;
+  products: NearbyProduct[];
+  // real photos only — leave empty until we have them (no AI stand-ins)
+  photos: NearbyPhoto[];
+  // optional overrides; default = same spot as our shop (they are next door)
+  mapsUrl?: string;
+  mapsEmbed?: string;
+  phone?: string;
+};
+
+// ร้านใกล้เคียง — ร้านของเพื่อนบ้าน แยกจาก Pumpkin&Melone และวิของชำ
+export const nearbyShops: NearbyShop[] = [
+  {
+    slug: "pa-mon",
+    name: "ร้านข้าวราดแกงป้ามน",
+    emoji: "🍛",
+    type: "ข้าวราดแกง",
+    tagline: "ร้านข้าวราดแกงที่อยู่ข้างร้านน้ำเต้าหู้ เดินไปซื้อได้เลย",
+    location: "ข้างร้านน้ำเต้าหู้ บริเวณหน้าร้านบ้านเรา",
+    details: [
+      "🕕 เริ่มขายประมาณ 05:40 น.",
+      "🏠 โดยทั่วไปขายถึงประมาณ 18:00 น. หรือจนกว่าของจะหมด",
+      "🌧️ หากฝนตกอาจไม่ได้ออกมาขาย",
+      "🔴 หยุดทุกวันจันทร์",
+    ],
+    note: "เวลาเปิด–ปิดอาจเปลี่ยนแปลงในแต่ละวัน ขึ้นอยู่กับสภาพอากาศและสินค้าว่าหมดเร็วหรือหมดช้า",
+    products: [
+      { name: "ข้าวราดแกง", price: 0, unit: "ราคาตามกับข้าว" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "wiriya",
+    name: "ร้านหมูปิ้งวิริญา",
+    emoji: "🍢",
+    type: "หมูปิ้ง / อาหารเช้า",
+    tagline: "หมูปิ้งร้อน ๆ ขายช่วงเช้า",
+    location: "ข้างบ้าน ติดกับหมู่บ้าน/ซอยประเสริฐสุข",
+    details: [
+      "🕟 เริ่มขายประมาณ 04:30 น.",
+      "⏰ ขายจนกว่าของจะหมด เวลาเก็บร้านอาจแตกต่างกันในแต่ละวัน",
+    ],
+    note: "โดยทั่วไปขายช่วงเช้าและอาจเก็บร้านประมาณ 09:00 น. แต่ไม่แน่นอน ขึ้นอยู่กับว่าสินค้าหมดเร็วหรือช้า",
+    products: [
+      { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้" },
+      { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ" },
+    ],
+    photos: [],
+  },
 ];
 
 export type Review = {
