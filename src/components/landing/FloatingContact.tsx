@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 
 const DISMISS_KEY = "pm.contact.dismissedAt";
 const DISMISS_HOURS = 24; // after × don't pop the card back up for a day
+const AUTO_MIN_MS = 8000; // on small screens the prompt card covers content — collapse it by itself
 
 export function FloatingContact() {
   // "card" = prompt shown, "open" = channels shown, "min" = only the round button
@@ -21,6 +22,14 @@ export function FloatingContact() {
     }, 0);
     return () => clearTimeout(id);
   }, []);
+
+  // Auto-collapse the prompt (not the channel list) on phones; a tap keeps it open
+  useEffect(() => {
+    if (mode !== "card") return;
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
+    const id = setTimeout(() => setMode((m) => (m === "card" ? "min" : m)), AUTO_MIN_MS);
+    return () => clearTimeout(id);
+  }, [mode]);
 
   const dismiss = () => {
     try {

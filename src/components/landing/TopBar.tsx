@@ -16,25 +16,43 @@ const links = [
   { href: "/#reviews", label: "⭐ รีวิว" },
 ];
 
-function useOpenNow() {
-  const [open, setOpen] = useState<boolean | null>(null);
+const dayNames = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสฯ", "ศุกร์", "เสาร์"];
+
+type OpenState = { open: boolean; nextOpen: string } | null;
+
+// Open/closed right now (Bangkok time) plus a short "opens again …" hint for when we're closed
+function useOpenNow(): OpenState {
+  const [state, setState] = useState<OpenState>(null);
   useEffect(() => {
     const check = () => {
       const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" }));
       const [oh, om] = site.open.split(":").map(Number);
       const [ch, cm] = site.close.split(":").map(Number);
       const mins = now.getHours() * 60 + now.getMinutes();
-      setOpen(now.getDay() !== site.closedDay && mins >= oh * 60 + om && mins < ch * 60 + cm);
+      const day = now.getDay();
+      const open = day !== site.closedDay && mins >= oh * 60 + om && mins < ch * 60 + cm;
+
+      // before opening today → "วันนี้"; otherwise the next non-closed day
+      let nextOpen = "";
+      if (!open) {
+        if (day !== site.closedDay && mins < oh * 60 + om) nextOpen = "วันนี้";
+        else {
+          let d = (day + 1) % 7;
+          if (d === site.closedDay) d = (d + 1) % 7;
+          nextOpen = d === (day + 1) % 7 ? "พรุ่งนี้" : `วัน${dayNames[d]}`;
+        }
+      }
+      setState({ open, nextOpen });
     };
     check();
     const t = setInterval(check, 60_000);
     return () => clearInterval(t);
   }, []);
-  return open;
+  return state;
 }
 
 export function TopBar() {
-  const open = useOpenNow();
+  const status = useOpenNow();
   const { user } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -57,16 +75,21 @@ export function TopBar() {
               Pumpkin&amp;Melone<span className="lg:hidden xl:inline"> Soy Milk</span>
             </span>
             <span className="flex flex-wrap items-center gap-x-2 text-xs text-cocoa/75">
-              {open === null ? (
+              {status === null ? (
                 <span>…</span>
-              ) : open ? (
-                <span className="font-semibold text-leaf">🟢 เปิดอยู่</span>
+              ) : status.open ? (
+                <>
+                  <span className="font-semibold text-leaf">🟢 เปิดอยู่</span>
+                  <span>ถึง {site.close} น.</span>
+                </>
               ) : (
-                <span className="font-semibold text-blush">🔴 ปิดอยู่</span>
+                <>
+                  <span className="font-semibold text-blush">🔴 ปิดอยู่</span>
+                  <span>
+                    เปิด{status.nextOpen} {site.open} น.
+                  </span>
+                </>
               )}
-              <span>
-                {site.open} – {site.close} น.
-              </span>
               <span className="hidden sm:inline">• ปิดทุกวันอาทิตย์</span>
             </span>
           </span>
