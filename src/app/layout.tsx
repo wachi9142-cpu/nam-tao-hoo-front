@@ -21,7 +21,7 @@ const notoThai = Noto_Sans_Thai({
 
 const title = "Pumpkin&Melone Soy Milk — น้ำเต้าหู้บ้าน ๆ จากความตั้งใจของแม่";
 const description =
-  "น้ำเต้าหู้สดใหม่ทุกเช้า ทำตั้งแต่ตี 3–4 เปิดจันทร์–เสาร์ 05:30–09:00 น. ซื้อที่หน้าร้านเท่านั้น";
+  "น้ำเต้าหู้สดใหม่ทุกเช้า ทำตั้งแต่ตี 3–4 เปิดจันทร์–เสาร์ 05:30–08:00 น. ซื้อที่หน้าร้านเท่านั้น";
 
 // Used to build absolute URLs for share previews (LINE / Facebook); set on the server when we have a domain
 export const metadata: Metadata = {

@@ -10,7 +10,7 @@ type Hit = { label: string; sub: string; href: string; emoji: string };
 const index: Hit[] = [
   { label: "หน้าแรก", sub: "หน้าแรกของร้าน", href: "/", emoji: "🏠" },
   { label: "เกี่ยวกับร้าน", sub: "เรื่องราวของแม่", href: "/#about", emoji: "💙" },
-  { label: "เวลาเปิด–ปิด", sub: "จันทร์–เสาร์ 05:30–09:00", href: "/#hours", emoji: "🕔" },
+  { label: "เวลาเปิด–ปิด", sub: "จันทร์–เสาร์ 05:30–08:00", href: "/#hours", emoji: "🕔" },
   { label: "ติดต่อเรา / แผนที่", sub: "ที่อยู่ โทร แผนที่", href: "/#location", emoji: "📍" },
   { label: "รีวิว", sub: "รีวิวจากลูกค้า", href: "/#reviews", emoji: "⭐" },
   { label: "รูปลูกค้า", sub: "แกลเลอรีจากลูกค้า", href: "/#photos", emoji: "📸" },

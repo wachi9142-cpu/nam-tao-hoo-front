@@ -10,17 +10,17 @@ export const site = {
   chatUrl: "",
   chatLabel: "LINE / Facebook",
   open: "05:30",
-  close: "09:00",
+  close: "08:00",
   closedDay: 0, // Sunday
 };
 
 export const weekHours = [
-  { day: "จันทร์", time: "05:30 – 09:00" },
-  { day: "อังคาร", time: "05:30 – 09:00" },
-  { day: "พุธ", time: "05:30 – 09:00" },
-  { day: "พฤหัสบดี", time: "05:30 – 09:00" },
-  { day: "ศุกร์", time: "05:30 – 09:00" },
-  { day: "เสาร์", time: "05:30 – 09:00" },
+  { day: "จันทร์", time: "05:30 – 08:00" },
+  { day: "อังคาร", time: "05:30 – 08:00" },
+  { day: "พุธ", time: "05:30 – 08:00" },
+  { day: "พฤหัสบดี", time: "05:30 – 08:00" },
+  { day: "ศุกร์", time: "05:30 – 08:00" },
+  { day: "เสาร์", time: "05:30 – 08:00" },
   { day: "อาทิตย์", time: "ปิด", closed: true },
 ];
 

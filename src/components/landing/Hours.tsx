@@ -6,7 +6,7 @@ export function Hours() {
       <div className="mx-auto max-w-lg overflow-hidden rounded-[2rem] bg-milk shadow-xl ring-4 ring-sky/30">
         <div className="bg-sky px-6 py-5 text-center text-white">
           <p className="font-display text-2xl font-bold">🌅 เปิดตั้งแต่ตี 5 ครึ่ง</p>
-          <p className="text-sm text-white/90">เปิดทุกวันจันทร์–เสาร์ • 05:30 – 09:00 น.</p>
+          <p className="text-sm text-white/90">เปิดทุกวันจันทร์–เสาร์ • 05:30 – 08:00 น.</p>
         </div>
         <table className="w-full text-sm">
           <tbody>
@@ -22,7 +22,7 @@ export function Hours() {
         </table>
         <div className="space-y-1 px-6 py-5 text-center">
           <p className="font-display font-bold text-pumpkin">🥛 แม่ทำสดใหม่ทุกเช้า มีจำนวนจำกัด — หมดแล้วหมดเลยน้า 💛</p>
-          <p className="text-xs text-cocoa/65">หากขายหมดก่อน 09:00 น. ร้านจะปิดก่อนเวลา</p>
+          <p className="text-xs text-cocoa/65">หากขายหมดก่อน 08:00 น. ร้านจะปิดก่อนเวลา</p>
           <p className="text-xs text-cocoa/65">🌱 แม่เริ่มเตรียมน้ำเต้าหู้ตั้งแต่ตี 3–4 เพื่อให้พร้อมขายในตอนเช้า</p>
         </div>
       </div>
