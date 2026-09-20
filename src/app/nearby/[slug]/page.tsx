@@ -13,7 +13,7 @@ export function generateStaticParams(): Params[] {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const shop = nearbyShops.find((s) => s.slug === slug);
-  return { title: shop ? `${shop.name} — ร้านใกล้เคียง Pumpkin&Melone` : "ร้านใกล้เคียง" };
+  return { title: shop ? `${shop.name} — ร้านใกล้เคียง` : "ร้านใกล้เคียง" };
 }
 
 // Placeholder shown until real photos are added (never AI images)
@@ -188,12 +188,33 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
             <div className="flex gap-2"><dt className="w-24 shrink-0 text-cocoa/60">ประเภท</dt><dd className="text-cocoa">{shop.type}</dd></div>
             <div className="flex gap-2"><dt className="w-24 shrink-0 text-cocoa/60">ตำแหน่ง</dt><dd className="text-cocoa">{shop.location}</dd></div>
           </dl>
-          {shop.phone ? (
-            <a href={`tel:${shop.phone}`} className="mt-4 inline-block rounded-full bg-sky px-5 py-2.5 text-sm font-semibold text-white hover:bg-sky-deep">
-              📞 โทรหาร้าน
-            </a>
+        </div>
+        <div className="rounded-3xl bg-milk p-6 ring-1 ring-bean/50 md:col-span-2">
+          <h2 className="font-display text-xl font-bold text-pumpkin">👤 ติดต่อร้าน</h2>
+          {shop.owners && shop.owners.length > 0 ? (
+            <>
+              <p className="mt-1 text-xs text-cocoa/60">
+                {shop.owners.length > 1 ? `ร้านนี้มีเจ้าของ ${shop.owners.length} คน` : "เจ้าของร้าน"} — แตะที่เบอร์เพื่อโทรออกได้เลย
+              </p>
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                {shop.owners.map((o) => (
+                  <li key={o.phone}>
+                    <a
+                      href={`tel:${o.phone}`}
+                      className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 ring-1 ring-bean/50 transition hover:bg-white"
+                    >
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sky/20 text-2xl">👤</span>
+                      <span className="min-w-0">
+                        <span className="block font-display font-bold text-cocoa">{o.name}</span>
+                        <span className="font-display text-lg font-bold text-sky-deep">📞 {o.phoneDisplay}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
           ) : (
-            <p className="mt-4 text-xs text-cocoa/55">📞 ร้านนี้ไม่มีเบอร์โทรติดต่อ — แวะมาที่หน้าร้านได้เลย</p>
+            <p className="mt-2 text-xs text-cocoa/55">📞 ร้านนี้ไม่มีเบอร์โทรติดต่อ — แวะมาที่หน้าร้านได้เลย</p>
           )}
         </div>
       </section>

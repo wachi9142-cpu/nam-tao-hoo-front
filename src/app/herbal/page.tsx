@@ -5,7 +5,7 @@ import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
 import { herbalDrinks, site } from "@/data/site";
 
-export const metadata: Metadata = { title: "สมุนไพรโฮมเมดจากแม่ — Pumpkin&Melone" };
+export const metadata: Metadata = { title: "สมุนไพรโฮมเมดจากแม่" };
 
 export default function HerbalPage() {
   return (

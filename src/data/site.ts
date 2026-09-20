@@ -68,6 +68,8 @@ export type NearbyService = {
   coinExchange?: { place: string; href: string; hours: string; warning: string };
 };
 
+export type NearbyOwner = { name: string; phone: string; phoneDisplay: string };
+
 export type NearbyShop = {
   slug: string;
   name: string;
@@ -85,7 +87,8 @@ export type NearbyShop = {
   // optional overrides; default = same spot as our shop (they are next door)
   mapsUrl?: string;
   mapsEmbed?: string;
-  phone?: string;
+  // shop owners with a phone number (tel: links on the detail page)
+  owners?: NearbyOwner[];
 };
 
 // ร้านใกล้เคียง — ร้านของเพื่อนบ้าน แยกจาก Pumpkin&Melone และวิของชำ
@@ -124,6 +127,10 @@ export const nearbyShops: NearbyShop[] = [
     products: [
       { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้" },
       { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ" },
+    ],
+    owners: [
+      { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
+      { name: "คุณนิ", phone: "0991017429", phoneDisplay: "099-101-7429" },
     ],
     services: [
       {

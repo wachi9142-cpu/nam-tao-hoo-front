@@ -4,7 +4,7 @@ import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
 import { grocery, site } from "@/data/site";
 
-export const metadata: Metadata = { title: "วิของชำ — Pumpkin&Melone" };
+export const metadata: Metadata = { title: "วิของชำ" };
 
 const BackButton = () => (
   <Link
