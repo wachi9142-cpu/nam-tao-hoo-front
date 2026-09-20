@@ -170,18 +170,24 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
             <div className="mt-4 rounded-2xl bg-milk p-4 ring-1 ring-blush/60">
               <p className="font-display font-bold text-cocoa">🧺 เครื่องซักผ้ามีปัญหา?</p>
               <p className="mt-1 text-sm leading-relaxed text-cocoa/85">{sv.support.intro}</p>
-              <a
-                href={`tel:${sv.support.owner.phone}`}
-                className="mt-3 flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 ring-1 ring-bean/50 transition hover:bg-white"
-              >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sky/20 text-2xl">📞</span>
-                <span className="min-w-0">
-                  <span className="block text-xs text-cocoa/60">{sv.support.owner.name} — เจ้าของเครื่อง</span>
-                  <span className="font-display text-lg font-bold text-sky-deep">{sv.support.owner.phoneDisplay}</span>
-                </span>
-              </a>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {sv.support.owners.map((o) => (
+                  <li key={o.phone}>
+                    <a
+                      href={`tel:${o.phone}`}
+                      className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 ring-1 ring-bean/50 transition hover:bg-white"
+                    >
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sky/20 text-2xl">📞</span>
+                      <span className="min-w-0">
+                        <span className="block text-xs text-cocoa/60">{o.name} — เจ้าของเครื่อง</span>
+                        <span className="font-display text-lg font-bold text-sky-deep">{o.phoneDisplay}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
               <p className="mt-3 text-xs leading-relaxed text-cocoa/70">
-                หากไม่สะดวกติดต่อ{sv.support.owner.name} สามารถติดต่อ{" "}
+                หากไม่สะดวกติดต่อเจ้าของเครื่อง สามารถติดต่อ{" "}
                 <Link href={sv.support.fallback.href} className="font-semibold text-sky-deep underline">
                   {sv.support.fallback.place}
                 </Link>{" "}
