@@ -66,6 +66,8 @@ export type NearbyService = {
   details: string[];
   // where/when customers can get coins for the machine
   coinExchange?: { place: string; href: string; hours: string; warning: string };
+  // who to call when the machine has a problem, plus a fallback place
+  support?: { intro: string; owner: NearbyOwner; fallback: { place: string; href: string; phone: string; phoneDisplay: string } };
 };
 
 export type NearbyOwner = { name: string; phone: string; phoneDisplay: string };
@@ -143,6 +145,11 @@ export const nearbyShops: NearbyShop[] = [
           href: "/grocery",
           hours: "05:30–21:00 น.",
           warning: "แลกเหรียญได้เฉพาะช่วงที่ร้านวิของชำเปิด — เครื่องซักผ้าเปิด 24 ชม. แต่หากร้านวิของชำปิด จะไม่สามารถแลกเหรียญที่ร้านได้",
+        },
+        support: {
+          intro: "หากพบปัญหาขณะใช้เครื่องซักผ้า สามารถติดต่อคุณต๋อง เจ้าของเครื่องได้โดยตรง เพื่อให้ช่วยตรวจสอบและแก้ไขปัญหาได้รวดเร็ว",
+          owner: { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
+          fallback: { place: "ร้านวิของชำ", href: "/grocery", phone: "0959375014", phoneDisplay: "095-937-5014" },
         },
       },
     ],
