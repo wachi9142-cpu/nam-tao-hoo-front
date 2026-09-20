@@ -133,6 +133,7 @@ export const nearbyShops: NearbyShop[] = [
     owners: [
       { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
       { name: "คุณนิ", phone: "0991017429", phoneDisplay: "099-101-7429" },
+      { name: "คุณใหม่", phone: "0990354032", phoneDisplay: "099-035-4032" },
     ],
     services: [
       {
