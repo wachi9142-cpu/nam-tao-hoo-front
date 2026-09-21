@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { seedPhotos, type Photo } from "@/data/site";
 import { fmtDate, useAuth, useLocalList } from "@/lib/auth";
+import { fileToDataUrl } from "@/lib/image";
 import { useLoginHref } from "@/components/LoginRequired";
 import { Avatar, Stars } from "./Reviews";
 import { SectionTitle } from "./SectionTitle";
@@ -21,9 +22,7 @@ export function CustomerPhotos() {
 
   const pick = (f?: File) => {
     if (!f) return;
-    const reader = new FileReader();
-    reader.onload = () => setSrc(String(reader.result));
-    reader.readAsDataURL(f);
+    fileToDataUrl(f).then(setSrc).catch(() => setSrc(undefined));
   };
 
   const submit = () => {

@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="bg-sky text-white">
+    <footer className="pb-20 xl:pb-0 bg-sky text-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">
         <div>
           <Image src="/images/logo.webp" alt="" width={72} height={72} className="mb-3 h-18 w-18 rounded-full object-cover ring-4 ring-white/40" />

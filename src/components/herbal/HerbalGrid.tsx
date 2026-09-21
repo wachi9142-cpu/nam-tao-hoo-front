@@ -26,9 +26,10 @@ export function HerbalGrid({ drinks }: { drinks: HerbalDrink[] }) {
         {drinks.map((d) => {
           const inner = (
             <>
-              <span className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-leaf/15 text-4xl ring-1 ring-bean/40 md:h-24 md:w-24">
+              {/* small but whole bottle (portrait, never cropped); emoji fallback */}
+              <span className="grid h-24 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-leaf/15 text-4xl ring-1 ring-bean/40 md:h-28 md:w-24">
                 {d.image ? (
-                  <Image src={d.image} alt={d.name} width={96} height={96} className="h-full w-full object-cover" />
+                  <Image src={d.imageFull ?? d.image} alt={d.name} width={96} height={128} className="h-full w-full object-contain" />
                 ) : (
                   d.emoji
                 )}
@@ -60,22 +61,22 @@ export function HerbalGrid({ drinks }: { drinks: HerbalDrink[] }) {
         <div
           role="dialog"
           aria-label={open.name}
-          className="fixed inset-0 z-[70] grid place-items-center bg-cocoa/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[70] flex flex-col bg-cocoa/90 backdrop-blur-sm"
           onClick={() => setOpen(null)}
         >
-          <div className="w-full max-w-md overflow-hidden rounded-[2rem] bg-milk shadow-2xl ring-4 ring-sky/30" onClick={(e) => e.stopPropagation()}>
-            {/* whole bottle, never cropped */}
-            <div className="relative aspect-[3/4] max-h-[70vh] w-full bg-cream">
-              <Image src={open.imageFull ?? open.image} alt={open.name} fill sizes="(min-width: 448px) 448px, 100vw" className="object-contain" priority />
-              <button
-                type="button"
-                onClick={() => setOpen(null)}
-                aria-label="ปิด"
-                className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-milk/90 text-lg text-cocoa shadow ring-1 ring-bean"
-              >
-                ✕
-              </button>
-            </div>
+          {/* full-screen: the bottle takes all the space above the info bar, never cropped */}
+          <button
+            type="button"
+            onClick={() => setOpen(null)}
+            aria-label="ปิด"
+            className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-milk/90 text-lg text-cocoa shadow ring-1 ring-bean"
+          >
+            ✕
+          </button>
+          <div className="relative min-h-0 flex-1">
+            <Image src={open.imageFull ?? open.image} alt={open.name} fill sizes="100vw" className="object-contain" priority />
+          </div>
+          <div className="mx-auto w-full max-w-lg rounded-t-[2rem] bg-milk shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start justify-between gap-4 p-5">
               <div className="min-w-0">
                 <p className="font-display text-2xl font-bold text-cocoa">

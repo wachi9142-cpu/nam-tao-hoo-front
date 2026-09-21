@@ -11,7 +11,7 @@ const stats = [
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-4 py-20">
-      <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] bg-milk p-8 shadow-lg ring-1 ring-bean/50 md:grid-cols-[1fr_1.6fr_1fr] md:p-12">
+      <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] bg-milk p-8 shadow-lg ring-1 ring-bean/50 lg:grid-cols-[1fr_1.6fr_1fr] md:p-12">
         <span className="animate-float absolute left-6 top-6 text-2xl opacity-60">🥛</span>
         <span className="animate-float absolute bottom-6 left-10 text-2xl opacity-60" style={{ animationDelay: "1.5s", "--r": "-10deg" } as CSSProperties}>🫘</span>
 
@@ -59,7 +59,7 @@ export function About() {
 
         {/* right: logo */}
         <div className="mx-auto">
-          <div className="grid h-56 w-56 place-items-center overflow-hidden rounded-full bg-cream shadow-xl ring-8 ring-sky/30 md:h-64 md:w-64">
+          <div className="grid h-56 w-56 place-items-center overflow-hidden rounded-full bg-cream shadow-xl ring-8 ring-sky/30 lg:h-64 lg:w-64">
             <Image src="/images/logo.webp" alt="โลโก้ Pumpkin&Melone Soy Milk" width={512} height={512} className="h-full w-full object-cover" />
           </div>
         </div>

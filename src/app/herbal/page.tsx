@@ -4,7 +4,7 @@ import { CallFirst } from "@/components/CallFirst";
 import { HerbalGrid } from "@/components/herbal/HerbalGrid";
 import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
-import { herbalDrinks, site } from "@/data/site";
+import { herbalDrinks, herbalIntro, site } from "@/data/site";
 
 export const metadata: Metadata = { title: "สมุนไพรโฮมเมดจากแม่" };
 
@@ -25,7 +25,14 @@ export default function HerbalPage() {
 
       <CallFirst className="mb-6" text={site.callFirst.herbal} phones={[{ phone: site.phone, phoneDisplay: site.phoneDisplay }]} />
 
+      <div className="mb-6 rounded-3xl bg-leaf/15 p-5 ring-1 ring-leaf/40">
+        <p className="font-display text-lg font-bold text-cocoa">{herbalIntro.title}</p>
+        <p className="mt-1 text-sm leading-relaxed text-cocoa/80">{herbalIntro.text}</p>
+      </div>
+
       <HerbalGrid drinks={herbalDrinks} />
+
+      <p className="mt-4 text-xs leading-relaxed text-cocoa/60">{herbalIntro.disclaimer}</p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-3xl bg-leaf/15 p-6 ring-1 ring-leaf/40">
