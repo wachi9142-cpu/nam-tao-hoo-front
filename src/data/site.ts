@@ -284,7 +284,7 @@ export const herbalDrinks: HerbalDrink[] = [
   { name: "เสาวรสน้ำผึ้งมะนาว", emoji: "🍯", price: 10, benefit: "หอมหวาน สดชื่น" },
   { name: "น้ำลำไย", emoji: "🟤", price: 10, benefit: "หวานหอม บำรุงกำลัง" },
   { name: "น้ำมะตูม", emoji: "🟠", price: 10, benefit: "หอมอุ่น ช่วยย่อย" },
-  { name: "น้ำขิง", emoji: "🍵", price: 10, benefit: "อุ่นท้อง ขับลม", image: "/images/herbal/ginger.jpg" },
+  { name: "น้ำขิง", emoji: "🍵", price: 10, benefit: "อุ่นท้อง ขับลม", image: "/images/herbal/ginger-bottle.jpg" },
   { name: "น้ำใบบัวบก", emoji: "🍃", price: 10, benefit: "แก้ช้ำใน เย็นสบาย" },
   { name: "น้ำสามสหาย", emoji: "🧃", price: 10, benefit: "มะตูม + พุทรา + กระเจี๊ยบ หอมหวานเปรี้ยวลงตัว", image: "/images/herbal/three-friends.jpg" },
 ];

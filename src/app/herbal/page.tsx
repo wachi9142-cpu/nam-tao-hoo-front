@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { CallFirst } from "@/components/CallFirst";
+import { HerbalGrid } from "@/components/herbal/HerbalGrid";
 import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
 import { herbalDrinks, site } from "@/data/site";
@@ -25,27 +25,7 @@ export default function HerbalPage() {
 
       <CallFirst className="mb-6" text={site.callFirst.herbal} phones={[{ phone: site.phone, phoneDisplay: site.phoneDisplay }]} />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {herbalDrinks.map((d) => (
-          <div
-            key={d.name}
-            className="flex min-w-0 items-center gap-4 rounded-3xl bg-milk p-4 ring-1 ring-bean/50 transition hover:-translate-y-0.5 hover:shadow-md md:p-5"
-          >
-            <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full bg-leaf/15 text-3xl">
-              {d.image ? (
-                <Image src={d.image} alt={d.name} width={56} height={56} className="h-full w-full object-cover" />
-              ) : (
-                d.emoji
-              )}
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="font-display font-bold text-cocoa md:text-lg">{d.name}</p>
-              <p className="text-xs text-cocoa/65">{d.benefit}</p>
-            </div>
-            <p className="font-display shrink-0 text-xl font-bold text-pumpkin">{d.price} <span className="text-sm font-semibold">บาท</span></p>
-          </div>
-        ))}
-      </div>
+      <HerbalGrid drinks={herbalDrinks} />
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-3xl bg-leaf/15 p-6 ring-1 ring-leaf/40">
