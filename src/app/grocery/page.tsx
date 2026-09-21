@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PhoneNotice } from "@/components/landing/PhoneNotice";
+import { ShopReviews } from "@/components/nearby/ShopReviews";
+import { groceryScope } from "@/lib/scopes";
 import { SectionTitle } from "@/components/landing/SectionTitle";
 import { grocery, site } from "@/data/site";
 
@@ -76,6 +78,8 @@ export default function GroceryPage() {
       </div>
 
       <PhoneNotice className="mt-4" />
+
+      <ShopReviews slug={groceryScope.scope} shopName={groceryScope.name} emoji={groceryScope.emoji} seed={groceryScope.seed} />
 
       <div className="mt-4 rounded-3xl border-2 border-dashed border-blush bg-blush/15 p-5 text-center">
         <p className="font-display font-bold text-cocoa">🏠 ซื้อสินค้าที่หน้าร้านเท่านั้น</p>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { seedReviews, type Review } from "@/data/site";
 import { fmtDate, useAuth, useLocalList } from "@/lib/auth";
 import { LikeButton, useLikes } from "@/lib/likes";
+import { LoginRequired, useLoginHref } from "@/components/LoginRequired";
 import { SectionTitle } from "./SectionTitle";
 
 export const Stars = ({ n }: { n: number }) => (
@@ -27,6 +28,7 @@ export function Reviews() {
   const { user } = useAuth();
   const [reviews, save] = useLocalList<Review>("pm.reviews", seedReviews);
   const likes = useLikes("home");
+  const loginHref = useLoginHref();
   const [openComment, setOpenComment] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [newText, setNewText] = useState("");
@@ -73,9 +75,7 @@ export function Reviews() {
             </button>
           </>
         ) : (
-          <p className="text-center text-sm text-cocoa/75">
-            <Link href="/login" className="font-semibold text-sky-deep underline">เข้าสู่ระบบ</Link> เพื่อเขียนรีวิว ถูกใจ และแสดงความคิดเห็น
-          </p>
+          <LoginRequired />
         )}
       </div>
 
@@ -113,7 +113,7 @@ export function Reviews() {
                       <button type="button" onClick={() => addComment(r.id)} className="rounded-full bg-sky px-3 text-white">ส่ง</button>
                     </div>
                   ) : (
-                    <p className="text-cocoa/60"><Link href="/login" className="text-sky-deep underline">เข้าสู่ระบบ</Link> เพื่อแสดงความคิดเห็น</p>
+                    <p className="text-cocoa/60"><Link href={loginHref} className="text-sky-deep underline">เข้าสู่ระบบ</Link> เพื่อแสดงความคิดเห็น</p>
                   )
                 )}
               </div>

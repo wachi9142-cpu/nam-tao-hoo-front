@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
 import { useAuth, type Provider } from "@/lib/auth";
 
 const providers: { id: Provider; icon: string; label: string; cls: string }[] = [
@@ -11,13 +11,16 @@ const providers: { id: Provider; icon: string; label: string; cls: string }[] = 
   { id: "google", icon: "🔴", label: "เข้าสู่ระบบด้วย Google", cls: "bg-white text-cocoa ring-1 ring-bean hover:bg-cream" },
 ];
 
-export default function LoginPage() {
+function LoginForm() {
   const { user, ready, login } = useAuth();
   const router = useRouter();
+  // where to go after login — only same-site paths, default to the profile
+  const raw = useSearchParams().get("next") ?? "";
+  const next = raw.startsWith("/") && !raw.startsWith("//") ? raw : "/profile";
 
   useEffect(() => {
-    if (ready && user) router.replace("/profile");
-  }, [ready, user, router]);
+    if (ready && user) router.replace(next);
+  }, [ready, user, router, next]);
 
   return (
     <main className="grid min-h-[70vh] place-items-center px-4 py-16">
@@ -33,7 +36,7 @@ export default function LoginPage() {
               onClick={() => {
                 // TODO: replace with real OAuth redirect from the backend
                 login(p.id);
-                router.push("/profile");
+                router.push(next);
               }}
               className={`grid grid-cols-[2.5rem_1fr_2.5rem] items-center rounded-full py-3 text-base font-semibold shadow-sm transition ${p.cls}`}
             >
@@ -45,5 +48,13 @@ export default function LoginPage() {
         <p className="mt-6 text-[11px] text-cocoa/50">🐾 ตอนนี้เป็นโหมดทดลอง (ยังไม่เชื่อมระบบจริง)</p>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   );
 }

@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { seedPhotos, type Photo } from "@/data/site";
 import { fmtDate, useAuth, useLocalList } from "@/lib/auth";
+import { useLoginHref } from "@/components/LoginRequired";
 import { Avatar, Stars } from "./Reviews";
 import { SectionTitle } from "./SectionTitle";
 
 export function CustomerPhotos() {
   const { user } = useAuth();
+  const loginHref = useLoginHref();
   const [photos, save] = useLocalList<Photo>("pm.photos", seedPhotos);
   const [open, setOpen] = useState(false);
   const [src, setSrc] = useState<string | undefined>();
@@ -45,7 +47,7 @@ export function CustomerPhotos() {
             </button>
           ) : (
             <p className="text-sm text-cocoa/75">
-              <Link href="/login" className="font-semibold text-sky-deep underline">เข้าสู่ระบบ</Link> เพื่อฝากรูปไว้ที่ร้าน
+              <Link href={loginHref} className="font-semibold text-sky-deep underline">เข้าสู่ระบบ</Link> เพื่อฝากรูปไว้ที่ร้าน
             </p>
           )}
         </div>

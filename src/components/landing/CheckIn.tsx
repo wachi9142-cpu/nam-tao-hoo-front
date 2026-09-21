@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { seedCheckIns, type CheckIn as CheckInT } from "@/data/site";
 import { fmtDateTime, useAuth, useLocalList } from "@/lib/auth";
+import { useLoginHref } from "@/components/LoginRequired";
 
 const quick = ["แวะเติมพลังตอนเช้า 🥛🐱", "มาซื้อฝากที่บ้าน 💛", "ทรงเครื่องเต็มแก้ว 🫘", "มาก่อนหมด! 🏃"];
 
 export function CheckIn() {
   const { user } = useAuth();
+  const loginHref = useLoginHref();
   const [items, save] = useLocalList<CheckInT>("pm.checkins", seedCheckIns);
   const [msg, setMsg] = useState("");
   const [done, setDone] = useState(false);
@@ -43,7 +45,7 @@ export function CheckIn() {
               </button>
             </>
           ) : (
-            <Link href="/login" className="font-display mt-6 block w-full rounded-full bg-milk py-4 text-xl font-bold text-sky-deep shadow-lg transition hover:scale-[1.02]">
+            <Link href={loginHref} className="font-display mt-6 block w-full rounded-full bg-milk py-4 text-xl font-bold text-sky-deep shadow-lg transition hover:scale-[1.02]">
               👤 เข้าสู่ระบบเพื่อเช็กอิน
             </Link>
           )}

@@ -17,7 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return { title: shop ? `${shop.name} — ร้านใกล้เคียง` : "ร้านใกล้เคียง" };
 }
 
-// Placeholder shown until real photos are added (never AI images)
+// Gallery has 5 slots; these labels fill the ones without a real photo yet (never AI images)
+const PHOTO_SLOTS = ["บริเวณหน้าร้าน", "จุดขาย / รถเข็น", "สินค้า", "บรรยากาศตอนเช้า", "ป้ายร้าน"];
+
+// Placeholder shown until real photos are added
 function PhotoSlot({ label }: { label: string }) {
   return (
     <div className="grid aspect-[4/3] place-items-center rounded-2xl border-2 border-dashed border-bean/60 bg-cream text-center text-xs text-cocoa/50">
@@ -61,23 +64,19 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
         </div>
       </header>
 
-      {/* storefront photos */}
+      {/* storefront photos — 5 slots; real photos first, empty slots wait for the shop */}
       <section className="mt-8">
         <h2 className="font-display text-xl font-bold text-pumpkin">🏠 ภาพหน้าร้าน</h2>
-        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
-          {shop.photos.length > 0 ? (
-            shop.photos.map((ph) => (
-              <figure key={ph.src} className="overflow-hidden rounded-2xl ring-1 ring-bean/50">
-                <Image src={ph.src} alt={ph.caption} width={600} height={450} className="aspect-[4/3] w-full object-cover" />
-                <figcaption className="bg-milk px-3 py-2 text-xs text-cocoa/70">{ph.caption}</figcaption>
-              </figure>
-            ))
-          ) : (
-            <>
-              <PhotoSlot label="บริเวณหน้าร้าน" />
-              <PhotoSlot label="จุดขาย / รถเข็น" />
-            </>
-          )}
+        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+          {shop.photos.map((ph) => (
+            <figure key={ph.src} className="overflow-hidden rounded-2xl ring-1 ring-bean/50">
+              <Image src={ph.src} alt={ph.caption} width={600} height={450} className="aspect-[4/3] w-full object-cover" />
+              <figcaption className="bg-milk px-3 py-2 text-xs text-cocoa/70">{ph.caption}</figcaption>
+            </figure>
+          ))}
+          {PHOTO_SLOTS.slice(shop.photos.length).map((label) => (
+            <PhotoSlot key={label} label={label} />
+          ))}
         </div>
       </section>
 
@@ -230,7 +229,7 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
           </dl>
         </div>
         <div className="rounded-3xl bg-milk p-6 ring-1 ring-bean/50 md:col-span-2">
-          <h2 className="font-display text-xl font-bold text-pumpkin">👤 ติดต่อร้าน</h2>
+          <h2 className="font-display text-xl font-bold text-pumpkin">👤 ติดต่อ{shop.name}</h2>
           {shop.owners && shop.owners.length > 0 ? (
             <>
               <p className="mt-1 text-xs text-cocoa/60">

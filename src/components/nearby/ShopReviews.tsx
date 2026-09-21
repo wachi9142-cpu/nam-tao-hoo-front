@@ -1,23 +1,26 @@
 "use client";
 
-import Link from "next/link";
 import { useRef, useState } from "react";
 import type { ShopReview } from "@/data/site";
 import { fmtDate, useAuth, useLocalList } from "@/lib/auth";
 import { LikeButton, useLikes } from "@/lib/likes";
+import { checkinsKey, reviewsKey } from "@/lib/scopes";
 import { Avatar, Stars } from "@/components/landing/Reviews";
+import { LoginRequired } from "@/components/LoginRequired";
 
 type Props = { slug: string; shopName: string; emoji: string; seed: ShopReview[] };
+export type ShopCheckIn = { user: string; date: string };
 
 // Per-shop reviews: rating, text, optional photo, likes, check-in badge and report.
-// Persisted in localStorage per shop until the backend API exists; likes live in useLikes.
+// One site-wide account (useAuth) is used for every shop; data is stored per scope
+// (see lib/scopes) in localStorage until the backend API exists.
 export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
   const { user } = useAuth();
-  const [reviews, save] = useLocalList<ShopReview>(`pm.nearby.${slug}.reviews`, seed);
-  const likes = useLikes(`nearby.${slug}`);
-  const [reported, setReported] = useLocalList<string>(`pm.nearby.${slug}.reported`, []);
-  // users who tapped "เช็กอิน" here — a review from them gets the 📍 badge
-  const [checkins, setCheckins] = useLocalList<string>(`pm.nearby.${slug}.checkins`, []);
+  const [reviews, save] = useLocalList<ShopReview>(reviewsKey(slug), seed);
+  const likes = useLikes(slug);
+  const [reported, setReported] = useLocalList<string>(`pm.shop.${slug}.reported`, []);
+  // who tapped "เช็กอิน" here and when — a review from them gets the 📍 badge
+  const [checkins, setCheckins] = useLocalList<ShopCheckIn>(checkinsKey(slug), []);
 
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(5);
@@ -29,7 +32,7 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
 
   const count = reviews.length;
   const avg = count ? reviews.reduce((a, r) => a + r.rating, 0) / count : 0;
-  const checkedIn = !!user && checkins.includes(user.name);
+  const checkedIn = !!user && checkins.some((c) => c.user === user.name);
 
   const flash = (m: string) => {
     setToast(m);
@@ -45,7 +48,7 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
 
   const checkIn = () => {
     if (!user) return;
-    if (!checkedIn) setCheckins([...checkins, user.name]);
+    if (!checkedIn) setCheckins([...checkins, { user: user.name, date: new Date().toISOString() }]);
     flash(`📍 เช็กอินที่${shopName}แล้ว`);
   };
 
@@ -100,12 +103,13 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
                 ✍️ เขียนรีวิว
               </button>
             </div>
-          ) : (
-            <p className="text-sm text-cocoa/75">
-              🔐 <Link href="/login" className="font-semibold text-sky-deep underline">เข้าสู่ระบบ</Link> ด้วย LINE / Facebook / Google เพื่อเขียนรีวิว
-            </p>
-          )}
+          ) : null}
         </div>
+        {!user && (
+          <div className="mt-4">
+            <LoginRequired />
+          </div>
+        )}
         {toast && <p className="mt-3 rounded-xl bg-leaf/15 px-3 py-2 text-sm font-semibold text-leaf">{toast}</p>}
       </div>
 
