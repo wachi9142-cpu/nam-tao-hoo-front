@@ -89,6 +89,7 @@ export type NearbyShop = {
   slug: string;
   name: string;
   emoji: string;
+  image?: string; // real photo shown instead of the emoji (square)
   type: string;
   tagline: string;
   location: string;
@@ -133,6 +134,7 @@ export const nearbyShops: NearbyShop[] = [
     slug: "wiriya",
     name: "ร้านหมูปิ้งวิริญา",
     emoji: "🍢",
+    image: "/images/nearby/wiriya-moo-ping.jpg",
     type: "หมูปิ้ง / เครื่องซักผ้าหยอดเหรียญ",
     tagline: "หมูปิ้งร้อน ๆ ขายช่วงเช้า และมีเครื่องซักผ้าหยอดเหรียญให้บริการ",
     location: "ข้างบ้าน ติดกับหมู่บ้าน/ซอยประเสริฐสุข",
@@ -142,7 +144,7 @@ export const nearbyShops: NearbyShop[] = [
     ],
     note: "โดยทั่วไปขายช่วงเช้าและอาจเก็บร้านประมาณ 09:00 น. แต่ไม่แน่นอน ขึ้นอยู่กับว่าสินค้าหมดเร็วหรือช้า",
     products: [
-      { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้" },
+      { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้", image: "/images/nearby/wiriya-moo-ping.jpg" },
       { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ" },
     ],
     owners: [
@@ -175,7 +177,7 @@ export const nearbyShops: NearbyShop[] = [
         },
       },
     ],
-    photos: [],
+    photos: [{ src: "/images/nearby/wiriya-moo-ping-wide.jpg", caption: "หมูปิ้งย่างใหม่ ๆ บนใบตอง" }],
   },
 ];
 

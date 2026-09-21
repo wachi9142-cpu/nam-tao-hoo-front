@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { nearbyShops } from "@/data/site";
 import { SectionTitle } from "./SectionTitle";
@@ -17,7 +18,11 @@ export function Nearby() {
               className="group flex flex-col rounded-3xl bg-cream p-6 ring-1 ring-bean/50 transition hover:-translate-y-1 hover:shadow-md"
             >
               <div className="flex items-center gap-3">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-honey/25 text-3xl">{s.emoji}</span>
+                {s.image ? (
+                  <Image src={s.image} alt={s.name} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-honey/60" />
+                ) : (
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-honey/25 text-3xl">{s.emoji}</span>
+                )}
                 <div className="min-w-0">
                   <h3 className="font-display text-lg font-bold text-cocoa group-hover:text-sky-deep">{s.name}</h3>
                   <p className="text-xs text-cocoa/60">{s.type}</p>

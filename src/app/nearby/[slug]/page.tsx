@@ -49,7 +49,11 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
 
       {/* header */}
       <header className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
-        <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-honey/25 text-5xl">{shop.emoji}</span>
+        {shop.image ? (
+          <Image src={shop.image} alt={shop.name} width={80} height={80} className="h-20 w-20 shrink-0 rounded-full object-cover shadow-md ring-2 ring-honey/60" />
+        ) : (
+          <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-honey/25 text-5xl">{shop.emoji}</span>
+        )}
         <div className="min-w-0">
           <p className="mb-2 text-xs font-semibold text-cocoa/60">ร้านใกล้เคียง • {shop.type}</p>
           <h1 className="font-display text-3xl font-bold text-cocoa md:text-4xl">{shop.name}</h1>
