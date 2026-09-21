@@ -40,8 +40,8 @@ export function FloatingContact() {
 
   if (mode === "hidden") return null;
 
-  // bottom offset on mobile clears the SideRail pill (bottom-4 + ~56px)
-  const pos = "fixed right-4 z-50 bottom-20 md:bottom-6";
+  // below xl the SideRail is a bottom pill, so lift the button above it
+  const pos = "fixed right-4 z-50 bottom-20 xl:bottom-6";
 
   if (mode === "min") {
     return (
@@ -49,7 +49,7 @@ export function FloatingContact() {
         type="button"
         onClick={() => setMode("open")}
         aria-label="ทักร้าน"
-        className={`${pos} grid h-14 w-14 place-items-center rounded-full bg-sky text-2xl text-white shadow-lg shadow-sky/40 transition hover:scale-105 md:right-24`}
+        className={`${pos} grid h-14 w-14 place-items-center rounded-full bg-sky text-2xl text-white shadow-lg shadow-sky/40 transition hover:scale-105 xl:right-24`}
       >
         💬
       </button>
@@ -60,7 +60,7 @@ export function FloatingContact() {
     <div
       role="dialog"
       aria-label="ติดต่อร้าน"
-      className={`${pos} w-[calc(100vw-2rem)] max-w-xs rounded-3xl bg-milk p-4 shadow-2xl ring-1 ring-bean/60 md:right-24 md:max-w-sm md:p-5`}
+      className={`${pos} w-[calc(100vw-2rem)] max-w-xs rounded-3xl bg-milk p-4 shadow-2xl ring-1 ring-bean/60 xl:right-24 md:max-w-sm md:p-5`}
     >
       <button
         type="button"

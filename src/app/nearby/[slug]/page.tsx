@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ShopReviews } from "@/components/nearby/ShopReviews";
 import { nearbyShops, site } from "@/data/site";
 
 type Params = { slug: string };
@@ -201,6 +202,9 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
           <p className="mt-3 text-xs text-cocoa/60">🤝 ร้านหมูปิ้งวิริญาและวิของชำอยู่ใกล้กันและช่วยอำนวยความสะดวกให้กัน</p>
         </section>
       ))}
+
+      {/* customer reviews */}
+      <ShopReviews slug={shop.slug} shopName={shop.name} emoji={shop.emoji} seed={shop.seedReviews ?? []} />
 
       {/* details */}
       <section className="mt-8 grid gap-4 md:grid-cols-2">

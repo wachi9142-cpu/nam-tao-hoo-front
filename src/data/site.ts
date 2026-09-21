@@ -72,6 +72,19 @@ export type NearbyService = {
 
 export type NearbyOwner = { name: string; phone: string; phoneDisplay: string };
 
+// Customer review of a neighbouring shop (stored per shop, like the main reviews)
+export type ShopReview = {
+  id: string;
+  user: string;
+  avatar: string;
+  rating: number;
+  text: string;
+  date: string;
+  likes: number; // base count; live likes come from lib/likes
+  image?: string; // data URL from the user's phone, or a path under public/
+  checkedIn?: boolean; // reviewer had checked in at this shop
+};
+
 export type NearbyShop = {
   slug: string;
   name: string;
@@ -91,6 +104,8 @@ export type NearbyShop = {
   mapsEmbed?: string;
   // shop owners with a phone number (tel: links on the detail page)
   owners?: NearbyOwner[];
+  // starter reviews shown until customers add their own
+  seedReviews?: ShopReview[];
 };
 
 // ร้านใกล้เคียง — ร้านของเพื่อนบ้าน แยกจาก Pumpkin&Melone และวิของชำ
@@ -134,6 +149,10 @@ export const nearbyShops: NearbyShop[] = [
       { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
       { name: "คุณนิ", phone: "0991017429", phoneDisplay: "099-101-7429" },
     ],
+    seedReviews: [
+      { id: "w1", user: "ฟ่าง", avatar: "🐱", rating: 5, text: "หมูปิ้งหอมมาก ตอนเช้าแวะซื้อก่อนออกไปทำงาน อร่อยดีค่ะ", date: "2026-09-18", likes: 12, checkedIn: true },
+      { id: "w2", user: "ลูกค้าหน้าร้าน", avatar: "🧑", rating: 4, text: "หมูนุ่ม ข้าวเหนียวร้อน ๆ ราคาไม่แพง", date: "2026-09-12", likes: 5 },
+    ],
     services: [
       {
         title: "เครื่องซักผ้าหยอดเหรียญ",
@@ -167,7 +186,7 @@ export type Review = {
   rating: number;
   text: string;
   date: string;
-  likes: number;
+  likes: number; // base count from before the like system; live likes are added on top (see lib/likes)
   comments: { user: string; text: string }[];
 };
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { seedReviews, type Review } from "@/data/site";
 import { fmtDate, useAuth, useLocalList } from "@/lib/auth";
+import { LikeButton, useLikes } from "@/lib/likes";
 import { SectionTitle } from "./SectionTitle";
 
 export const Stars = ({ n }: { n: number }) => (
@@ -25,17 +26,11 @@ export const Avatar = ({ name, i }: { name: string; i: number }) => (
 export function Reviews() {
   const { user } = useAuth();
   const [reviews, save] = useLocalList<Review>("pm.reviews", seedReviews);
-  const [liked, setLiked] = useLocalList<string>("pm.liked", []);
+  const likes = useLikes("home");
   const [openComment, setOpenComment] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [newText, setNewText] = useState("");
   const [newRating, setNewRating] = useState(5);
-
-  const toggleLike = (id: string) => {
-    const has = liked.includes(id);
-    setLiked(has ? liked.filter((x) => x !== id) : [...liked, id]);
-    save(reviews.map((r) => (r.id === id ? { ...r, likes: r.likes + (has ? -1 : 1) } : r)));
-  };
 
   const addComment = (id: string) => {
     if (!user || !draft.trim()) return;
@@ -97,14 +92,7 @@ export function Reviews() {
             <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-cocoa/85">“{r.text}”</blockquote>
             <p className="mt-3 text-xs text-cocoa/55">📅 {fmtDate(r.date)}</p>
             <div className="mt-4 flex gap-2 border-t border-bean/40 pt-3 text-xs">
-              <button
-                type="button"
-                onClick={() => (user ? toggleLike(r.id) : undefined)}
-                title={user ? "" : "เข้าสู่ระบบก่อน"}
-                className={`rounded-full px-3 py-1.5 font-semibold ring-1 ring-bean/60 transition ${liked.includes(r.id) ? "bg-blush/40 text-cocoa" : "bg-cream hover:bg-white"}`}
-              >
-                ❤️ ถูกใจ {r.likes}
-              </button>
+              <LikeButton id={r.id} base={r.likes} likes={likes} />
               <button
                 type="button"
                 onClick={() => setOpenComment(openComment === r.id ? null : r.id)}
