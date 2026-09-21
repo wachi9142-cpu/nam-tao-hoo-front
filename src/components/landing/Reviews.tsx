@@ -6,6 +6,7 @@ import { seedReviews, type Review } from "@/data/site";
 import { fmtDate, useAuth, useLocalList } from "@/lib/auth";
 import { LikeButton, useLikes } from "@/lib/likes";
 import { LoginRequired, useLoginHref } from "@/components/LoginRequired";
+import { OwnerReplyBox, ReportMenu } from "@/components/reviews/ReviewExtras";
 import { SectionTitle } from "./SectionTitle";
 
 export const Stars = ({ n }: { n: number }) => (
@@ -82,14 +83,16 @@ export function Reviews() {
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {reviews.map((r, i) => (
           <article key={r.id} className="flex flex-col rounded-3xl bg-milk p-6 shadow-sm ring-1 ring-bean/50">
-            <div className="flex items-center gap-3">
+            <div className="flex items-start gap-3">
               <Avatar name={r.user} i={i} />
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-display font-bold text-cocoa">{r.user}</p>
                 <Stars n={r.rating} />
               </div>
+              <ReportMenu scope="home" reviewId={r.id} />
             </div>
             <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-cocoa/85">“{r.text}”</blockquote>
+            <OwnerReplyBox reply={r.reply} />
             <p className="mt-3 text-xs text-cocoa/55">📅 {fmtDate(r.date)}</p>
             <div className="mt-4 flex gap-2 border-t border-bean/40 pt-3 text-xs">
               <LikeButton id={r.id} base={r.likes} likes={likes} />

@@ -1,4 +1,5 @@
-import { weekHours } from "@/data/site";
+import { site, weekHours } from "@/data/site";
+import { CallFirst } from "@/components/CallFirst";
 
 export function Hours() {
   return (
@@ -26,6 +27,11 @@ export function Hours() {
           <p className="text-xs text-cocoa/65">🌱 แม่เริ่มเตรียมน้ำเต้าหู้ตั้งแต่ตี 3–4 เพื่อให้พร้อมขายในตอนเช้า</p>
         </div>
       </div>
+      <CallFirst
+        className="mx-auto mt-6 max-w-lg"
+        text={site.callFirst.soyMilk}
+        phones={[{ phone: site.phone, phoneDisplay: site.phoneDisplay }]}
+      />
     </section>
   );
 }

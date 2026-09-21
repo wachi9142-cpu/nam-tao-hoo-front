@@ -57,7 +57,8 @@ export function TopBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const loginLabel = user ? `${user.avatar} ${user.name}` : "👤 เข้าสู่ระบบ";
-  const loginHref = user ? "/profile" : "/login";
+  // admins go to the dashboard instead of a customer profile
+  const loginHref = user ? (user.role === "admin" ? "/admin" : "/profile") : "/login";
 
   return (
     <header className="sticky top-0 z-50 border-b border-bean/40 bg-cream/90 backdrop-blur">

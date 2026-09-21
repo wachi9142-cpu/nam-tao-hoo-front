@@ -12,6 +12,11 @@ export const site = {
   open: "05:30",
   close: "08:00",
   closedDay: 0, // Sunday
+  // "call before you come" reasons for the family's own shops
+  callFirst: {
+    soyMilk: "ทำสดใหม่ทุกเช้าและมีจำนวนจำกัด หากสินค้าหมดก่อนเวลา ร้านจะปิดก่อนเวลา",
+    herbal: "เนื่องจากน้ำสมุนไพรแต่ละชนิดไม่ได้มีทุกวัน และขึ้นอยู่กับวัตถุดิบที่หาได้",
+  },
 };
 
 export const weekHours = [
@@ -83,6 +88,7 @@ export type ShopReview = {
   likes: number; // base count; live likes come from lib/likes
   image?: string; // data URL from the user's phone, or a path under public/
   checkedIn?: boolean; // reviewer had checked in at this shop
+  reply?: OwnerReply;
 };
 
 export type NearbyShop = {
@@ -105,6 +111,8 @@ export type NearbyShop = {
   mapsEmbed?: string;
   // shop owners with a phone number (tel: links on the detail page)
   owners?: NearbyOwner[];
+  // why customers should call ahead (shown as a "📞 โทรสอบถามก่อนมา" notice)
+  callFirst?: string;
   // starter reviews shown until customers add their own
   seedReviews?: ShopReview[];
 };
@@ -125,6 +133,7 @@ export const nearbyShops: NearbyShop[] = [
       "🔴 หยุดทุกวันจันทร์",
     ],
     note: "เวลาเปิด–ปิดอาจเปลี่ยนแปลงในแต่ละวัน ขึ้นอยู่กับสภาพอากาศและสินค้าว่าหมดเร็วหรือหมดช้า",
+    callFirst: "เวลาออกขายและเวลาหมดอาจแตกต่างกันในแต่ละวัน และหากฝนตกอาจไม่ได้ออกมาขาย",
     products: [
       { name: "ข้าวราดแกง", price: 0, unit: "ราคาตามกับข้าว" },
     ],
@@ -143,6 +152,7 @@ export const nearbyShops: NearbyShop[] = [
       "⏰ ขายจนกว่าของจะหมด เวลาเก็บร้านอาจแตกต่างกันในแต่ละวัน",
     ],
     note: "โดยทั่วไปขายช่วงเช้าและอาจเก็บร้านประมาณ 09:00 น. แต่ไม่แน่นอน ขึ้นอยู่กับว่าสินค้าหมดเร็วหรือช้า",
+    callFirst: "ร้านย่างและขายไปพร้อมกัน และขายจนกว่าสินค้าจะหมด หากหมูปิ้งหมดก่อนเวลาที่คาดไว้ ร้านอาจปิดก่อนเวลา",
     products: [
       { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้", image: "/images/nearby/wiriya-moo-ping.jpg" },
       { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ" },
@@ -181,6 +191,9 @@ export const nearbyShops: NearbyShop[] = [
   },
 ];
 
+// Owner/admin reply shown under a review, with who wrote it (audit)
+export type OwnerReply = { text: string; by: string; role: "owner" | "admin"; date: string };
+
 export type Review = {
   id: string;
   user: string;
@@ -190,6 +203,7 @@ export type Review = {
   date: string;
   likes: number; // base count from before the like system; live likes are added on top (see lib/likes)
   comments: { user: string; text: string }[];
+  reply?: OwnerReply;
 };
 
 export const seedReviews: Review[] = [

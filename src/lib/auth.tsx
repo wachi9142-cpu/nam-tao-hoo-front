@@ -3,13 +3,15 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 
 // Mock auth: stored in localStorage until the backend OAuth flow exists.
-export type Provider = "line" | "facebook" | "instagram" | "google";
-export type User = { name: string; avatar: string; provider: Provider };
+export type Provider = "line" | "facebook" | "instagram" | "google" | "admin";
+// role "admin" is separate from customer accounts; only /admin grants it (mock passcode for now)
+export type User = { name: string; avatar: string; provider: Provider; role?: "admin" };
 
 type AuthCtx = {
   user: User | null;
   ready: boolean;
   login: (provider: Provider) => void;
+  loginAdmin: (code: string) => boolean;
   logout: () => void;
 };
 
@@ -21,9 +23,13 @@ const mockNames: Record<Provider, string> = {
   facebook: "Fang K.",
   instagram: "fang.soymilk",
   google: "Kaofang",
+  admin: "แอดมินร้าน",
 };
 
-function readJSON<T>(key: string): T | null {
+// Mock admin passcode until the backend issues real admin sessions
+const ADMIN_CODE = process.env.NEXT_PUBLIC_ADMIN_CODE ?? "1234";
+
+export function readJSON<T>(key: string): T | null {
   try {
     const raw = localStorage.getItem(key);
     return raw ? (JSON.parse(raw) as T) : null;
@@ -32,7 +38,7 @@ function readJSON<T>(key: string): T | null {
   }
 }
 
-function writeJSON(key: string, value: unknown) {
+export function writeJSON(key: string, value: unknown) {
   try {
     if (value === null) localStorage.removeItem(key);
     else localStorage.setItem(key, JSON.stringify(value));
@@ -55,12 +61,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setState({ user: u, ready: true });
   }, []);
 
+  const loginAdmin = useCallback((code: string) => {
+    if (code !== ADMIN_CODE) return false;
+    const u: User = { name: mockNames.admin, avatar: "🛡️", provider: "admin", role: "admin" };
+    writeJSON(KEY, u);
+    setState({ user: u, ready: true });
+    return true;
+  }, []);
+
   const logout = useCallback(() => {
     writeJSON(KEY, null);
     setState({ user: null, ready: true });
   }, []);
 
-  return <Ctx.Provider value={{ user: state.user, ready: state.ready, login, logout }}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={{ user: state.user, ready: state.ready, login, loginAdmin, logout }}>{children}</Ctx.Provider>;
 }
 
 export function useAuth() {

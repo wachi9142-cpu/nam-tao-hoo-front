@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CallFirst } from "@/components/CallFirst";
 import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
 import { herbalDrinks, site } from "@/data/site";
@@ -21,6 +22,8 @@ export default function HerbalPage() {
           🌿 น้ำสมุนไพรโฮมเมด
         </SectionTitle>
       </div>
+
+      <CallFirst className="mb-6" text={site.callFirst.herbal} phones={[{ phone: site.phone, phoneDisplay: site.phoneDisplay }]} />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {herbalDrinks.map((d) => (

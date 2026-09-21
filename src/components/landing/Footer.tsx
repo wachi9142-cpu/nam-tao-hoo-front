@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/data/site";
 
@@ -24,6 +25,7 @@ export function Footer() {
       </div>
       <p className="border-t border-white/20 py-4 text-center text-xs text-white/75">
         © {new Date().getFullYear()} Pumpkin&amp;Melone Soy Milk • ทำด้วยใจ 💛
+        <Link href="/admin" className="ml-3 text-white/50 hover:text-white">🛡️ สำหรับแอดมิน</Link>
       </p>
     </footer>
   );

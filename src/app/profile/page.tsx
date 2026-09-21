@@ -47,6 +47,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (ready && !user) router.replace("/login");
+    if (ready && user?.role === "admin") router.replace("/admin");
   }, [ready, user, router]);
 
   if (!user) return null;

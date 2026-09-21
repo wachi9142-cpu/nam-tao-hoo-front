@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CallFirst } from "@/components/CallFirst";
 import { ShopReviews } from "@/components/nearby/ShopReviews";
 import { nearbyShops, site } from "@/data/site";
 
@@ -106,6 +107,14 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
           </div>
         </div>
       </section>
+
+      {shop.callFirst && (
+        <CallFirst
+          className="mt-8"
+          text={shop.callFirst}
+          phones={(shop.owners ?? []).map((o) => ({ label: o.name, phone: o.phone, phoneDisplay: o.phoneDisplay }))}
+        />
+      )}
 
       {/* products */}
       <section className="mt-8">

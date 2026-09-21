@@ -7,6 +7,7 @@ import { LikeButton, useLikes } from "@/lib/likes";
 import { checkinsKey, reviewsKey } from "@/lib/scopes";
 import { Avatar, Stars } from "@/components/landing/Reviews";
 import { LoginRequired } from "@/components/LoginRequired";
+import { OwnerReplyBox, ReportMenu } from "@/components/reviews/ReviewExtras";
 
 type Props = { slug: string; shopName: string; emoji: string; seed: ShopReview[] };
 export type ShopCheckIn = { user: string; date: string };
@@ -18,7 +19,6 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
   const { user } = useAuth();
   const [reviews, save] = useLocalList<ShopReview>(reviewsKey(slug), seed);
   const likes = useLikes(slug);
-  const [reported, setReported] = useLocalList<string>(`pm.shop.${slug}.reported`, []);
   // who tapped "เช็กอิน" here and when — a review from them gets the 📍 badge
   const [checkins, setCheckins] = useLocalList<ShopCheckIn>(checkinsKey(slug), []);
 
@@ -65,13 +65,6 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
     flash("✅ ขอบคุณสำหรับรีวิวค่ะ");
   };
 
-  const report = (id: string) => {
-    if (reported.includes(id)) return;
-    if (!confirm("รายงานรีวิวนี้ว่าไม่เหมาะสม?")) return;
-    setReported([...reported, id]);
-    flash("🚩 รายงานแล้ว ขอบคุณค่ะ ทางร้านจะตรวจสอบ");
-  };
-
   return (
     <section id="reviews" className="mt-8">
       {/* summary + actions */}
@@ -116,9 +109,8 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
       {/* list */}
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         {reviews.map((r, i) => {
-          const isReported = reported.includes(r.id);
           return (
-            <article key={r.id} className={`flex flex-col rounded-3xl bg-milk p-5 shadow-sm ring-1 ring-bean/50 ${isReported ? "opacity-60" : ""}`}>
+            <article key={r.id} className="flex flex-col rounded-3xl bg-milk p-5 shadow-sm ring-1 ring-bean/50">
               <div className="flex items-start gap-3">
                 <Avatar name={r.user} i={i} />
                 <div className="min-w-0 flex-1">
@@ -130,16 +122,7 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
                   </p>
                   <Stars n={r.rating} />
                 </div>
-                <button
-                  type="button"
-                  onClick={() => report(r.id)}
-                  disabled={isReported}
-                  title={isReported ? "รายงานแล้ว" : "รายงานรีวิวที่ไม่เหมาะสม"}
-                  aria-label="รายงานรีวิว"
-                  className="shrink-0 rounded-full px-2 py-1 text-xs text-cocoa/50 hover:bg-cream hover:text-blush disabled:cursor-default"
-                >
-                  🚩{isReported && <span className="ml-1">รายงานแล้ว</span>}
-                </button>
+                <ReportMenu scope={slug} reviewId={r.id} onReported={() => flash("🚩 รายงานแล้ว ขอบคุณค่ะ แอดมินจะตรวจสอบ")} />
               </div>
 
               <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-cocoa/85">“{r.text}”</blockquote>
@@ -148,6 +131,7 @@ export function ShopReviews({ slug, shopName, emoji, seed }: Props) {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={r.image} alt={`รูปจาก ${r.user}`} className="mt-3 aspect-[4/3] w-full rounded-2xl object-cover ring-1 ring-bean/40" />
               )}
+              <OwnerReplyBox reply={r.reply} />
 
               <div className="mt-3 flex items-center justify-between gap-2 border-t border-bean/40 pt-3 text-xs">
                 <LikeButton id={r.id} base={r.likes} likes={likes} label="คนถูกใจ" />
