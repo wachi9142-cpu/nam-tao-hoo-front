@@ -64,8 +64,9 @@ export function HerbalGrid({ drinks }: { drinks: HerbalDrink[] }) {
           onClick={() => setOpen(null)}
         >
           <div className="w-full max-w-md overflow-hidden rounded-[2rem] bg-milk shadow-2xl ring-4 ring-sky/30" onClick={(e) => e.stopPropagation()}>
-            <div className="relative aspect-square w-full bg-cream">
-              <Image src={open.image} alt={open.name} fill sizes="(min-width: 448px) 448px, 100vw" className="object-cover" priority />
+            {/* whole bottle, never cropped */}
+            <div className="relative aspect-[3/4] max-h-[70vh] w-full bg-cream">
+              <Image src={open.imageFull ?? open.image} alt={open.name} fill sizes="(min-width: 448px) 448px, 100vw" className="object-contain" priority />
               <button
                 type="button"
                 onClick={() => setOpen(null)}

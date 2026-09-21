@@ -271,10 +271,11 @@ export const grocery: GroceryCategory[] = [
 
 // ---------- น้ำสมุนไพร ----------
 // image: optional path under public/ — shown instead of the emoji when set
-export type HerbalDrink = { name: string; emoji: string; price: number; benefit: string; days?: string; image?: string };
+// imageFull: whole-bottle photo for the enlarged view (image is the square crop for cards)
+export type HerbalDrink = { name: string; emoji: string; price: number; benefit: string; days?: string; image?: string; imageFull?: string };
 
 export const herbalDrinks: HerbalDrink[] = [
-  { name: "น้ำเก๊กฮวย", emoji: "🌼", price: 10, benefit: "แก้ร้อนใน ชื่นใจ", image: "/images/herbal/chrysanthemum.jpg" },
+  { name: "น้ำเก๊กฮวย", emoji: "🌼", price: 10, benefit: "แก้ร้อนใน ชื่นใจ", image: "/images/herbal/chrysanthemum.jpg", imageFull: "/images/herbal/chrysanthemum-full.jpg" },
   { name: "น้ำกระเจี๊ยบ", emoji: "❤️", price: 10, benefit: "เปรี้ยวหวาน ลดกระหาย" },
   { name: "อัญชันมะนาว", emoji: "💙", price: 10, benefit: "สีสวย บำรุงสายตา" },
   { name: "น้ำใบเตย", emoji: "🌿", price: 10, benefit: "หอมเย็น ชื่นใจ" },
@@ -284,7 +285,7 @@ export const herbalDrinks: HerbalDrink[] = [
   { name: "เสาวรสน้ำผึ้งมะนาว", emoji: "🍯", price: 10, benefit: "หอมหวาน สดชื่น" },
   { name: "น้ำลำไย", emoji: "🟤", price: 10, benefit: "หวานหอม บำรุงกำลัง" },
   { name: "น้ำมะตูม", emoji: "🟠", price: 10, benefit: "หอมอุ่น ช่วยย่อย" },
-  { name: "น้ำขิง", emoji: "🍵", price: 10, benefit: "อุ่นท้อง ขับลม", image: "/images/herbal/ginger-bottle.jpg" },
+  { name: "น้ำขิง", emoji: "🍵", price: 10, benefit: "อุ่นท้อง ขับลม", image: "/images/herbal/ginger-bottle.jpg", imageFull: "/images/herbal/ginger-bottle-full.jpg" },
   { name: "น้ำใบบัวบก", emoji: "🍃", price: 10, benefit: "แก้ช้ำใน เย็นสบาย" },
-  { name: "น้ำสามสหาย", emoji: "🧃", price: 10, benefit: "มะตูม + พุทรา + กระเจี๊ยบ หอมหวานเปรี้ยวลงตัว", image: "/images/herbal/three-friends.jpg" },
+  { name: "น้ำสามสหาย", emoji: "🧃", price: 10, benefit: "มะตูม + พุทรา + กระเจี๊ยบ หอมหวานเปรี้ยวลงตัว", image: "/images/herbal/three-friends.jpg", imageFull: "/images/herbal/three-friends-full.jpg" },
 ];
