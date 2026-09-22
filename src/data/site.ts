@@ -156,7 +156,7 @@ export const nearbyShops: NearbyShop[] = [
       { name: "น้ำพริกกะปิ", price: 10, unit: "บาท / ถุง" },
       { name: "ข้าวธรรมดา", price: 0, unit: "3 ถ้วย / 10 บาท", image: "/images/nearby/pa-mon-rice.jpg" },
       { name: "ข้าวหอมมะลิ", price: 0, unit: "3 ถ้วย / 12 บาท" },
-      { name: "ขนมหวาน", price: 0, unit: "เริ่มต้น 10–20 บาท • ราคาขึ้นอยู่กับชนิดของขนม แต่ละวันอาจมีขนมแตกต่างกัน", image: "/images/nearby/pa-mon-dessert.jpg" },
+      { name: "ขนมหวาน", price: 0, unit: "เริ่มต้น 10–20 บาท • ราคาขึ้นอยู่กับชนิดของขนม แต่ละวันอาจมีขนมแตกต่างกัน" },
     ],
     extras: [
       {
@@ -176,7 +176,7 @@ export const nearbyShops: NearbyShop[] = [
     photoSlots: [
       { id: "cart", label: "รถเข็นป้ามน", emoji: "🚚" },
       { id: "sign", label: "ป้ายร้าน", emoji: "🪧" },
-      { id: "dessert", label: "โต๊ะขนมหวาน", emoji: "🍡" },
+      { id: "snack", label: "ของว่าง / โต๊ะขนม", emoji: "🍡" },
       { id: "fresh", label: "ของสด / กับข้าวถุง", emoji: "🥬" },
       { id: "alms", label: "ชุดใส่บาตร", emoji: "🙏" },
       { id: "food", label: "เมนูอาหาร / กับข้าว", emoji: "🍛" },
@@ -186,7 +186,7 @@ export const nearbyShops: NearbyShop[] = [
     photos: [
       { src: "/images/nearby/pa-mon-stall-wide.jpg", caption: "รถเข็นป้ามน กับข้าวหลายอย่างทุกเช้า" },
       { src: "/images/nearby/pa-mon-sign-wide.jpg", caption: "ป้ายร้าน ป้ามน ข้าวแกง" },
-      { src: "/images/nearby/pa-mon-dessert-wide.jpg", caption: "หม้อข้าวและขนมหวานหน้าร้าน" },
+      { src: "/images/nearby/pa-mon-dessert-wide.jpg", caption: "หม้อข้าวและของว่างหน้าร้าน" },
       { src: "/images/nearby/pa-mon-fresh-wide.jpg", caption: "ของสดและกับข้าวถุง สแกนจ่ายได้" },
     ],
   },
