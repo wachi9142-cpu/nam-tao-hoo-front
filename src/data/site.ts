@@ -362,8 +362,8 @@ export type HerbalDrink = { name: string; emoji: string; price: number; benefit:
 export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำเก๊กฮวย", emoji: "🌼", price: 10, benefit: "ดื่มง่าย หอมสดชื่น ช่วยเติมความสดชื่น", image: "/images/herbal/chrysanthemum.jpg", imageFull: "/images/herbal/chrysanthemum-full.jpg" },
   { name: "น้ำกระเจี๊ยบ", emoji: "🌺", price: 10, benefit: "รสเปรี้ยวสดชื่น มีสารต้านอนุมูลอิสระจากสารสีธรรมชาติ", image: "/images/herbal/roselle-bottle.jpg", imageFull: "/images/herbal/roselle-bottle-full.jpg" },
-  { name: "อัญชันมะนาว", emoji: "🦋", price: 10, benefit: "สีสวย เปรี้ยวสดชื่น และอัญชันมีสารแอนโทไซยานิน" },
-  { name: "น้ำใบเตย", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น" },
+  { name: "น้ำอัญชัน", emoji: "🦋", price: 10, benefit: "สีสวย สดชื่น และอัญชันมีสารแอนโทไซยานิน" },
+  { name: "น้ำใบเตยหอม", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น" },
   { name: "น้ำมะม่วงหาวมะนาวโห่", emoji: "🫐", price: 10, benefit: "รสเปรี้ยวอมหวาน มีสารต้านอนุมูลอิสระ" },
   { name: "น้ำเสาวรส", emoji: "🟣", price: 10, benefit: "หอมเปรี้ยว มีวิตามินและสารต้านอนุมูลอิสระ", image: "/images/herbal/passion-fruit.jpg", imageFull: "/images/herbal/passion-fruit-full.jpg" },
   { name: "น้ำผึ้งมะนาว", emoji: "🍋", price: 10, benefit: "เปรี้ยวหวานสดชื่น เหมาะสำหรับดื่มเพิ่มความสดชื่น" },
@@ -372,6 +372,7 @@ export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำมะตูม", emoji: "🟠", price: 10, benefit: "หอมอุ่น ช่วยย่อย" },
   { name: "น้ำขิง", emoji: "🫚", price: 10, benefit: "กลิ่นเผ็ดอุ่น ๆ มีสารสำคัญจากขิง เช่น gingerols", image: "/images/herbal/ginger-bottle.jpg", imageFull: "/images/herbal/ginger-bottle-full.jpg" },
   { name: "น้ำใบบัวบก", emoji: "🍃", price: 10, benefit: "เย็นสบาย ดื่มง่าย", image: "/images/herbal/gotu-kola.jpg", imageFull: "/images/herbal/gotu-kola-full.jpg" },
-  { name: "น้ำตะไคร้", emoji: "🌱", price: 10, benefit: "กลิ่นหอม ดื่มแล้วสดชื่น" },
+  { name: "น้ำตะไคร้ใบเตยหอม", emoji: "🌱", price: 10, benefit: "หอมตะไคร้ผสมใบเตย ดื่มแล้วสดชื่น" },
+  { name: "น้ำถั่วห้าสี", emoji: "🫘", price: 10, benefit: "ถั่ว 5 ชนิด หอมมัน อิ่มท้อง" },
   { name: "น้ำสามสหาย", emoji: "🧃", price: 10, benefit: "มะตูม + พุทรา + กระเจี๊ยบ หอมหวานเปรี้ยวลงตัว", image: "/images/herbal/three-friends.jpg", imageFull: "/images/herbal/three-friends-full.jpg" },
 ];
