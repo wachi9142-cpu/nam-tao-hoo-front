@@ -233,7 +233,7 @@ export const nearbyShops: NearbyShop[] = [
           intro: "หากพบปัญหาขณะใช้เครื่องซักผ้า สามารถติดต่อเจ้าของเครื่องได้โดยตรง เพื่อให้ช่วยตรวจสอบและแก้ไขปัญหาได้รวดเร็ว",
           owners: [
             { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
-            { name: "คุณใหม่", phone: "0990354032", phoneDisplay: "099-035-4032" },
+            { name: "คุณใหม่", phone: "0624314828", phoneDisplay: "062-431-4828" },
           ],
           fallback: { place: "ร้านวิของชำ", href: "/grocery", phone: "0959375014", phoneDisplay: "095-937-5014" },
         },
