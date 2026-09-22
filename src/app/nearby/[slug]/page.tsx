@@ -170,6 +170,9 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
               <span className="rounded-full bg-honey/40 px-3 py-1 text-xs font-semibold text-cocoa ring-1 ring-honey/60">{sv.badge}</span>
             )}
           </div>
+          {sv.image && (
+            <Image src={sv.image} alt={sv.title} width={1200} height={900} className="mt-4 aspect-[4/3] w-full rounded-2xl object-cover ring-1 ring-bean/50 sm:aspect-[16/9]" />
+          )}
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl bg-milk p-4 ring-1 ring-bean/50">
               <p className="font-display font-bold text-cocoa">{sv.emoji} เครื่องซักผ้า</p>

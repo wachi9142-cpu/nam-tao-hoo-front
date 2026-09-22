@@ -68,6 +68,7 @@ export type NearbyService = {
   title: string;
   emoji: string;
   badge?: string;
+  image?: string; // real photo of the service (4:3)
   details: string[];
   // where/when customers can get coins for the machine
   coinExchange?: { place: string; href: string; hours: string; warning: string };
@@ -213,7 +214,8 @@ export const nearbyShops: NearbyShop[] = [
         title: "เครื่องซักผ้าหยอดเหรียญ",
         emoji: "🧺",
         badge: "🤝 จุดแลกเหรียญ: วิของชำ",
-        details: ["🟢 เปิด 24 ชั่วโมง", "💰 เริ่มต้น 30 บาท", "🪙 ใช้เหรียญ 10 บาทในการหยอดเครื่อง"],
+        image: "/images/nearby/wiriya-laundry-wide.jpg",
+        details: ["🟢 เปิด 24 ชั่วโมง", "🧺 มี 3 เครื่อง: 30 / 30 / 40 บาทต่อครั้ง", "💰 เริ่มต้น 30 บาท", "🪙 ใช้เหรียญ 10 บาทในการหยอดเครื่อง"],
         coinExchange: {
           place: "วิของชำ",
           href: "/grocery",
@@ -237,6 +239,7 @@ export const nearbyShops: NearbyShop[] = [
       { id: "rice", label: "ข้าวเหนียว", emoji: "🍚" },
       { id: "rice2", label: "ข้าวเหนียวห่อ", emoji: "🛍️" },
       { id: "closeup", label: "หมูปิ้งใกล้ ๆ", emoji: "🔍" },
+      { id: "laundry", label: "เครื่องซักผ้าหยอดเหรียญ", emoji: "🧺" },
       { id: "morning", label: "บรรยากาศตอนเช้า", emoji: "🌅" },
     ],
     photos: [
@@ -246,6 +249,7 @@ export const nearbyShops: NearbyShop[] = [
       { src: "/images/nearby/wiriya-sticky-rice-wide.jpg", caption: "ข้าวเหนียวร้อน ๆ" },
       { src: "/images/nearby/wiriya-sticky-rice-pack-wide.jpg", caption: "ข้าวเหนียวห่อละ 5 บาท" },
       { src: "/images/nearby/wiriya-closeup-wide.jpg", caption: "หมูนุ่ม ฉ่ำ ๆ ใกล้ ๆ" },
+      { src: "/images/nearby/wiriya-laundry-wide.jpg", caption: "เครื่องซักผ้าหยอดเหรียญ 3 เครื่อง (30 / 30 / 40 บาท)" },
     ],
   },
 ];
