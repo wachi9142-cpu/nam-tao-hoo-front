@@ -155,7 +155,7 @@ export const nearbyShops: NearbyShop[] = [
     callFirst: "ร้านย่างและขายไปพร้อมกัน และขายจนกว่าสินค้าจะหมด หากหมูปิ้งหมดก่อนเวลาที่คาดไว้ ร้านอาจปิดก่อนเวลา",
     products: [
       { name: "หมูปิ้ง", price: 5, unit: "บาท/ไม้", image: "/images/nearby/wiriya-moo-ping.jpg" },
-      { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ" },
+      { name: "ข้าวเหนียว", price: 5, unit: "บาท/ห่อ", image: "/images/nearby/wiriya-sticky-rice.jpg" },
     ],
     owners: [
       { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
@@ -188,7 +188,11 @@ export const nearbyShops: NearbyShop[] = [
       },
     ],
     photos: [
-      { src: "/images/nearby/wiriya-moo-ping-wide.jpg", caption: "หมูปิ้งย่างใหม่ ๆ บนใบตอง" },
+      { src: "/images/nearby/wiriya-storefront-wide.jpg", caption: "หน้าร้าน — ย่างและขายกันตรงนี้เลย" },
+      { src: "/images/nearby/wiriya-sign-wide.jpg", caption: "ป้ายร้าน ข้าวเหนียวหมูปิ้ง ไม้ละ 5 บาท" },
+      { src: "/images/nearby/wiriya-moo-ping-leaf-wide.jpg", caption: "หมูปิ้งย่างใหม่ ๆ บนใบตอง" },
+      { src: "/images/nearby/wiriya-sticky-rice-wide.jpg", caption: "ข้าวเหนียวร้อน ๆ" },
+      { src: "/images/nearby/wiriya-sticky-rice-pack-wide.jpg", caption: "ข้าวเหนียวห่อละ 5 บาท" },
       { src: "/images/nearby/wiriya-closeup-wide.jpg", caption: "หมูนุ่ม ฉ่ำ ๆ ใกล้ ๆ" },
     ],
   },
