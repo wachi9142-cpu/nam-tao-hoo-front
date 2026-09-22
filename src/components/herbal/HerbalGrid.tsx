@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { HerbalDrink } from "@/data/site";
+import { herbalIntro, type HerbalDrink } from "@/data/site";
 
 // Drink cards with a bigger photo; tapping a card with a real photo opens it
 // large in the middle of the screen with name, price and benefit.
@@ -37,7 +37,12 @@ export function HerbalGrid({ drinks }: { drinks: HerbalDrink[] }) {
               <div className="min-w-0 flex-1 text-left">
                 <p className="font-display font-bold text-cocoa md:text-lg">{d.name}</p>
                 <p className="text-xs text-cocoa/65">{d.benefit}</p>
-                {d.image && <p className="mt-1 text-[11px] font-semibold text-sky-deep">🔍 แตะเพื่อดูรูปใหญ่</p>}
+                {d.image && (
+                  <>
+                    <p className="mt-1 text-[11px] font-semibold text-sky-deep">🔍 แตะเพื่อดูรูปใหญ่</p>
+                    <p className="mt-0.5 text-[10px] leading-snug text-cocoa/50">{herbalIntro.colorNote}</p>
+                  </>
+                )}
               </div>
               <p className="font-display shrink-0 text-xl font-bold text-pumpkin">
                 {d.price} <span className="text-sm font-semibold">บาท</span>
@@ -84,6 +89,7 @@ export function HerbalGrid({ drinks }: { drinks: HerbalDrink[] }) {
                 </p>
                 <p className="mt-1 text-sm text-cocoa/70">{open.benefit}</p>
                 {open.days && <p className="mt-1 text-xs text-cocoa/55">📅 {open.days}</p>}
+                <p className="mt-2 text-[11px] leading-snug text-cocoa/55">{herbalIntro.colorNote}</p>
               </div>
               <p className="font-display shrink-0 rounded-full bg-honey/30 px-4 py-2 text-2xl font-bold text-pumpkin ring-1 ring-honey/60">
                 {open.price} <span className="text-sm font-semibold">บาท</span>

@@ -31,7 +31,10 @@ export default function HerbalPage() {
         {herbalGallery.map((g) => (
           <figure key={g.src} className="overflow-hidden rounded-3xl bg-milk ring-1 ring-bean/50">
             <Image src={g.src} alt={g.caption} width={1400} height={800} className="aspect-[7/4] w-full object-cover" />
-            <figcaption className="px-4 py-2 text-xs text-cocoa/70">{g.caption}</figcaption>
+            <figcaption className="px-4 py-2 text-xs text-cocoa/70">
+              {g.caption}
+              <span className="mt-0.5 block text-[11px] text-cocoa/50">{herbalIntro.colorNote}</span>
+            </figcaption>
           </figure>
         ))}
       </div>
@@ -43,7 +46,12 @@ export default function HerbalPage() {
 
       <HerbalGrid drinks={herbalDrinks} />
 
-      <p className="mt-4 text-xs leading-relaxed text-cocoa/60">{herbalIntro.disclaimer}</p>
+      <div className="mt-4 space-y-2 text-xs leading-relaxed text-cocoa/60">
+        <p>
+          <strong className="text-cocoa/80">🌿 หมายเหตุเกี่ยวกับสีและรูปภาพ:</strong> {herbalIntro.colorNoteLong}
+        </p>
+        <p>{herbalIntro.disclaimer}</p>
+      </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-3xl bg-leaf/15 p-6 ring-1 ring-leaf/40">
