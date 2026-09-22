@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CallFirst } from "@/components/CallFirst";
+import { DailyMenu } from "@/components/nearby/DailyMenu";
+import { ShopGallery } from "@/components/nearby/ShopGallery";
 import { ShopReviews } from "@/components/nearby/ShopReviews";
 import { nearbyShops, site } from "@/data/site";
 
@@ -18,23 +20,14 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return { title: shop ? `${shop.name} — ร้านใกล้เคียง` : "ร้านใกล้เคียง" };
 }
 
-// Gallery has 5 slots; these labels fill the ones without a real photo yet (never AI images)
-const PHOTO_SLOTS = ["บริเวณหน้าร้าน", "จุดขาย / รถเข็น", "สินค้า", "บรรยากาศตอนเช้า", "ป้ายร้าน"];
-
-// Placeholder shown until real photos are added
-function PhotoSlot({ label }: { label: string }) {
-  return (
-    <div className="grid aspect-[4/3] place-items-center rounded-2xl border-2 border-dashed border-bean/60 bg-cream text-center text-xs text-cocoa/50">
-      <span>
-        📷
-        <br />
-        {label}
-        <br />
-        <span className="text-[10px]">(รอรูปจริงจากร้าน)</span>
-      </span>
-    </div>
-  );
-}
+// Default slots for shops that don't define their own
+const DEFAULT_SLOTS = [
+  { id: "front", label: "บริเวณหน้าร้าน", emoji: "🏠" },
+  { id: "stall", label: "จุดขาย / รถเข็น", emoji: "🛒" },
+  { id: "food", label: "สินค้า", emoji: "🍽️" },
+  { id: "morning", label: "บรรยากาศตอนเช้า", emoji: "🌅" },
+  { id: "sign", label: "ป้ายร้าน", emoji: "🪧" },
+];
 
 export default async function NearbyShopPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
@@ -65,21 +58,8 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
         </div>
       </header>
 
-      {/* storefront photos — 5 slots; real photos first, empty slots wait for the shop */}
-      <section className="mt-8">
-        <h2 className="font-display text-xl font-bold text-pumpkin">🏠 ภาพหน้าร้าน</h2>
-        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-          {shop.photos.map((ph) => (
-            <figure key={ph.src} className="overflow-hidden rounded-2xl ring-1 ring-bean/50">
-              <Image src={ph.src} alt={ph.caption} width={600} height={450} className="aspect-[4/3] w-full object-cover" />
-              <figcaption className="bg-milk px-3 py-2 text-xs text-cocoa/70">{ph.caption}</figcaption>
-            </figure>
-          ))}
-          {PHOTO_SLOTS.slice(shop.photos.length).map((label) => (
-            <PhotoSlot key={label} label={label} />
-          ))}
-        </div>
-      </section>
+      {/* storefront photos — admin fills the named slots from this page */}
+      <ShopGallery scope={shop.slug} slots={shop.photoSlots ?? DEFAULT_SLOTS} seed={shop.photos} />
 
       {/* map */}
       <section className="mt-8 grid gap-4 md:grid-cols-[3fr_2fr]">
@@ -116,9 +96,42 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
         />
       )}
 
+      {shop.extras?.map((ex) => (
+        <section key={ex.title} className="mt-8 rounded-3xl bg-milk p-6 ring-1 ring-bean/50">
+          <h2 className="font-display text-xl font-bold text-pumpkin">
+            {ex.emoji} {ex.title}
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-cocoa/85">{ex.text}</p>
+          {ex.price && <p className="mt-2 font-display font-bold text-cocoa">{ex.price}</p>}
+          {ex.bullets && (
+            <>
+              <p className="mt-3 text-xs font-semibold text-cocoa/60">ภายในชุดสามารถประกอบด้วย</p>
+              <ul className="mt-1 flex flex-wrap gap-2">
+                {ex.bullets.map((b) => (
+                  <li key={b} className="rounded-full bg-cream px-3 py-1 text-sm ring-1 ring-bean/50">
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {ex.note && <p className="mt-3 text-xs text-cocoa/60">{ex.note}</p>}
+        </section>
+      ))}
+
+      {shop.dailyMenu && (
+        <DailyMenu
+          scope={shop.slug}
+          title={shop.dailyMenu.title}
+          hint={shop.dailyMenu.hint}
+          phone={shop.owners?.[0]?.phone}
+          phoneDisplay={shop.owners?.[0]?.phoneDisplay}
+        />
+      )}
+
       {/* products */}
       <section className="mt-8">
-        <h2 className="font-display text-xl font-bold text-pumpkin">{shop.emoji} สินค้า</h2>
+        <h2 className="font-display text-xl font-bold text-pumpkin">{shop.emoji} เมนูและราคา</h2>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {shop.products.map((pr) => (
             <div key={pr.name} className="flex items-center gap-4 rounded-2xl bg-milk p-4 ring-1 ring-bean/50">
@@ -131,7 +144,7 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
               )}
               <div className="min-w-0 flex-1">
                 <p className="font-display font-bold text-cocoa">{pr.name}</p>
-                <p className="text-sm text-pumpkin">
+                <p className="text-sm leading-snug text-pumpkin">
                   {pr.price > 0 ? (
                     <>
                       <span className="font-display text-lg font-bold">{pr.price}</span> {pr.unit}
@@ -262,7 +275,7 @@ export default async function NearbyShopPage({ params }: { params: Promise<Param
               </ul>
             </>
           ) : (
-            <p className="mt-2 text-xs text-cocoa/55">📞 ร้านนี้ไม่มีเบอร์โทรติดต่อ — แวะมาที่หน้าร้านได้เลย</p>
+            <p className="mt-2 text-xs text-cocoa/55">📞 {shop.phoneNote ?? "ร้านนี้ไม่มีเบอร์โทรติดต่อ — แวะมาที่หน้าร้านได้เลย"}</p>
           )}
         </div>
       </section>

@@ -91,6 +91,12 @@ export type ShopReview = {
   reply?: OwnerReply;
 };
 
+// Named photo slot the admin can fill from the shop page ("＋ เพิ่มรูป")
+export type PhotoSlot = { id: string; label: string; emoji: string };
+
+// Extra info block (e.g. ชุดใส่บาตร)
+export type ShopExtra = { title: string; emoji: string; text: string; bullets?: string[]; note?: string; price?: string; photoSlot?: string };
+
 export type NearbyShop = {
   slug: string;
   name: string;
@@ -115,6 +121,13 @@ export type NearbyShop = {
   callFirst?: string;
   // starter reviews shown until customers add their own
   seedReviews?: ShopReview[];
+  // photo slots the admin fills in; static `photos` fill the first slots
+  photoSlots?: PhotoSlot[];
+  extras?: ShopExtra[];
+  // the shop's menu changes daily — admin posts today's list instead of a fixed menu
+  dailyMenu?: { title: string; hint: string };
+  // shown when the shop hasn't given us a number yet
+  phoneNote?: string;
 };
 
 // ร้านใกล้เคียง — ร้านของเพื่อนบ้าน แยกจาก Pumpkin&Melone และวิของชำ
@@ -123,19 +136,49 @@ export const nearbyShops: NearbyShop[] = [
     slug: "pa-mon",
     name: "ร้านข้าวราดแกงป้ามน",
     emoji: "🍛",
-    type: "ข้าวราดแกง",
-    tagline: "ร้านข้าวราดแกงที่อยู่ข้างร้านน้ำเต้าหู้ เดินไปซื้อได้เลย",
-    location: "ข้างร้านน้ำเต้าหู้ บริเวณหน้าร้านบ้านเรา",
+    type: "ข้าวราดแกง / ของกินช่วงเช้า",
+    tagline: "ข้าวราดแกงและของกินช่วงเช้า เมนูหลากหลาย เปลี่ยนไปในแต่ละวัน",
+    location: "บริเวณใกล้ร้านน้ำเต้าหู้ Pumpkin&Melone Soy Milk",
     details: [
       "🕕 เริ่มขายประมาณ 05:40 น.",
-      "🏠 โดยทั่วไปขายถึงประมาณ 18:00 น. หรือจนกว่าของจะหมด",
-      "🌧️ หากฝนตกอาจไม่ได้ออกมาขาย",
-      "🔴 หยุดทุกวันจันทร์",
+      "🍛 ขายไปจนกว่าของจะหมด",
+      "⏰ เวลาปิดในแต่ละวันไม่แน่นอน ขึ้นอยู่กับว่าสินค้าหมดเร็วหรือช้า",
+      "🌧️ หากฝนตก อาจไม่ได้ออกมาขาย",
+      "🔴 หยุดทุกวันอาทิตย์",
     ],
-    note: "เวลาเปิด–ปิดอาจเปลี่ยนแปลงในแต่ละวัน ขึ้นอยู่กับสภาพอากาศและสินค้าว่าหมดเร็วหรือหมดช้า",
-    callFirst: "เวลาออกขายและเวลาหมดอาจแตกต่างกันในแต่ละวัน และหากฝนตกอาจไม่ได้ออกมาขาย",
+    note: "เมนูไม่จำเป็นต้องเหมือนกันทุกวัน เพราะทำตามเมนูที่มีในแต่ละวัน",
+    callFirst: "เนื่องจากร้านขายอาหารตามจำนวนที่ทำในแต่ละวัน และเมนูอาจเปลี่ยนแปลงทุกวัน",
+    phoneNote: "ร้านยังไม่ได้ให้เบอร์โทร — แวะมาที่หน้าร้านได้เลย",
     products: [
-      { name: "ข้าวราดแกง", price: 0, unit: "ราคาตามกับข้าว" },
+      { name: "กับข้าว", price: 0, unit: "เริ่มต้น 40 บาท / ถุง • เมนูเปลี่ยนไปในแต่ละวัน" },
+      { name: "น้ำพริกกะปิ", price: 10, unit: "บาท / ถุง" },
+      { name: "ข้าวธรรมดา", price: 0, unit: "3 ถ้วย / 10 บาท" },
+      { name: "ข้าวหอมมะลิ", price: 0, unit: "3 ถ้วย / 12 บาท" },
+      { name: "ขนมหวาน", price: 0, unit: "เริ่มต้น 10–20 บาท • ราคาขึ้นอยู่กับชนิดของขนม แต่ละวันอาจมีขนมแตกต่างกัน" },
+    ],
+    extras: [
+      {
+        title: "ชุดใส่บาตร",
+        emoji: "🙏",
+        text: "ช่วงเช้าที่รถเข็นป้ามนมีชุดสำหรับใส่บาตรจำหน่ายด้วย ลูกค้าสามารถเลือกเมนูสำหรับใส่บาตรเองได้จากเมนูที่มีในวันนั้น",
+        price: "🧺 ชุดใส่บาตร ราคาสอบถามที่ร้าน",
+        bullets: ["🍚 ข้าว", "💧 น้ำ", "🥛 นม", "🍬 ขนม", "🍛 กับข้าว"],
+        note: "📌 เมนูสำหรับชุดใส่บาตรขึ้นอยู่กับรายการอาหารที่มีในแต่ละวัน",
+        photoSlot: "alms",
+      },
+    ],
+    dailyMenu: {
+      title: "🥘 เมนูอาหารประจำวัน",
+      hint: "เมนูที่แสดงเป็นเมนูของวันที่ร้านอัปเดตเท่านั้น ไม่ใช่รายการตายตัว",
+    },
+    photoSlots: [
+      { id: "cart", label: "รถเข็นป้ามน", emoji: "🚚" },
+      { id: "alms", label: "ชุดใส่บาตร", emoji: "🙏" },
+      { id: "food", label: "เมนูอาหาร / กับข้าว", emoji: "🍛" },
+      { id: "chili", label: "น้ำพริกกะปิ", emoji: "🌶️" },
+      { id: "rice", label: "ข้าว", emoji: "🍚" },
+      { id: "dessert", label: "โต๊ะขนมหวาน", emoji: "🍡" },
+      { id: "daily", label: "เมนูอาหารประจำวัน", emoji: "🥘" },
     ],
     photos: [],
   },
@@ -186,6 +229,15 @@ export const nearbyShops: NearbyShop[] = [
           fallback: { place: "ร้านวิของชำ", href: "/grocery", phone: "0959375014", phoneDisplay: "095-937-5014" },
         },
       },
+    ],
+    photoSlots: [
+      { id: "front", label: "บริเวณหน้าร้าน", emoji: "🏠" },
+      { id: "sign", label: "ป้ายร้าน", emoji: "🪧" },
+      { id: "pork", label: "หมูปิ้ง", emoji: "🍢" },
+      { id: "rice", label: "ข้าวเหนียว", emoji: "🍚" },
+      { id: "rice2", label: "ข้าวเหนียวห่อ", emoji: "🛍️" },
+      { id: "closeup", label: "หมูปิ้งใกล้ ๆ", emoji: "🔍" },
+      { id: "morning", label: "บรรยากาศตอนเช้า", emoji: "🌅" },
     ],
     photos: [
       { src: "/images/nearby/wiriya-storefront-wide.jpg", caption: "หน้าร้าน — ย่างและขายกันตรงนี้เลย" },
