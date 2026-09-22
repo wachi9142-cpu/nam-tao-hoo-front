@@ -333,6 +333,12 @@ export const grocery: GroceryCategory[] = [
 ];
 
 // ---------- น้ำสมุนไพร ----------
+// Sample photos of the bottles (shown above the drink list)
+export const herbalGallery = [
+  { src: "/images/herbal/bottles-row.jpg", caption: "น้ำสมุนไพรของแม่ ขวดละ 10 บาท" },
+  { src: "/images/herbal/bottles-three.jpg", caption: "กระเจี๊ยบ • เก๊กฮวย • และอีกหลายรส" },
+];
+
 export const herbalIntro = {
   title: "🌿 น้ำสมุนไพรของแม่",
   text: "สมุนไพรแต่ละชนิดมีเอกลักษณ์และสารอาหารแตกต่างกัน เลือกดื่มตามรสชาติและความชอบได้เลย 💚",
@@ -344,7 +350,7 @@ export type HerbalDrink = { name: string; emoji: string; price: number; benefit:
 
 export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำเก๊กฮวย", emoji: "🌼", price: 10, benefit: "ดื่มง่าย หอมสดชื่น ช่วยเติมความสดชื่น", image: "/images/herbal/chrysanthemum.jpg", imageFull: "/images/herbal/chrysanthemum-full.jpg" },
-  { name: "น้ำกระเจี๊ยบ", emoji: "🌺", price: 10, benefit: "รสเปรี้ยวสดชื่น มีสารต้านอนุมูลอิสระจากสารสีธรรมชาติ" },
+  { name: "น้ำกระเจี๊ยบ", emoji: "🌺", price: 10, benefit: "รสเปรี้ยวสดชื่น มีสารต้านอนุมูลอิสระจากสารสีธรรมชาติ", image: "/images/herbal/roselle-bottle.jpg", imageFull: "/images/herbal/roselle-bottle-full.jpg" },
   { name: "อัญชันมะนาว", emoji: "🦋", price: 10, benefit: "สีสวย เปรี้ยวสดชื่น และอัญชันมีสารแอนโทไซยานิน" },
   { name: "น้ำใบเตย", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น" },
   { name: "น้ำมะม่วงหาวมะนาวโห่", emoji: "🫐", price: 10, benefit: "รสเปรี้ยวอมหวาน มีสารต้านอนุมูลอิสระ" },

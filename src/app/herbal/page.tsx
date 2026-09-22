@@ -4,7 +4,8 @@ import { CallFirst } from "@/components/CallFirst";
 import { HerbalGrid } from "@/components/herbal/HerbalGrid";
 import { PhoneNotice } from "@/components/landing/PhoneNotice";
 import { SectionTitle } from "@/components/landing/SectionTitle";
-import { herbalDrinks, herbalIntro, site } from "@/data/site";
+import Image from "next/image";
+import { herbalDrinks, herbalGallery, herbalIntro, site } from "@/data/site";
 
 export const metadata: Metadata = { title: "สมุนไพรโฮมเมดจากแม่" };
 
@@ -24,6 +25,16 @@ export default function HerbalPage() {
       </div>
 
       <CallFirst className="mb-6" text={site.callFirst.herbal} phones={[{ phone: site.phone, phoneDisplay: site.phoneDisplay }]} />
+
+      {/* sample bottles */}
+      <div className="mb-6 grid gap-3 sm:grid-cols-2">
+        {herbalGallery.map((g) => (
+          <figure key={g.src} className="overflow-hidden rounded-3xl bg-milk ring-1 ring-bean/50">
+            <Image src={g.src} alt={g.caption} width={1400} height={800} className="aspect-[7/4] w-full object-cover" />
+            <figcaption className="px-4 py-2 text-xs text-cocoa/70">{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
 
       <div className="mb-6 rounded-3xl bg-leaf/15 p-5 ring-1 ring-leaf/40">
         <p className="font-display text-lg font-bold text-cocoa">{herbalIntro.title}</p>
