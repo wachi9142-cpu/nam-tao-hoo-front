@@ -143,7 +143,7 @@ export const nearbyShops: NearbyShop[] = [
     slug: "wiriya",
     name: "ร้านหมูปิ้งวิริญา",
     emoji: "🍢",
-    image: "/images/nearby/wiriya-moo-ping.jpg",
+    image: "/images/nearby/wiriya-icon.jpg",
     type: "หมูปิ้ง / เครื่องซักผ้าหยอดเหรียญ",
     tagline: "หมูปิ้งร้อน ๆ ขายช่วงเช้า และมีเครื่องซักผ้าหยอดเหรียญให้บริการ",
     location: "ข้างบ้าน ติดกับหมู่บ้าน/ซอยประเสริฐสุข",
@@ -187,7 +187,10 @@ export const nearbyShops: NearbyShop[] = [
         },
       },
     ],
-    photos: [{ src: "/images/nearby/wiriya-moo-ping-wide.jpg", caption: "หมูปิ้งย่างใหม่ ๆ บนใบตอง" }],
+    photos: [
+      { src: "/images/nearby/wiriya-moo-ping-wide.jpg", caption: "หมูปิ้งย่างใหม่ ๆ บนใบตอง" },
+      { src: "/images/nearby/wiriya-closeup-wide.jpg", caption: "หมูนุ่ม ฉ่ำ ๆ ใกล้ ๆ" },
+    ],
   },
 ];
 
