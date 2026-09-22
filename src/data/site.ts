@@ -137,6 +137,7 @@ export const nearbyShops: NearbyShop[] = [
     slug: "pa-mon",
     name: "ร้านข้าวราดแกงป้ามน",
     emoji: "🍛",
+    image: "/images/nearby/pa-mon-icon.jpg",
     type: "ข้าวราดแกง / ของกินช่วงเช้า",
     tagline: "ข้าวราดแกงและของกินช่วงเช้า เมนูหลากหลาย เปลี่ยนไปในแต่ละวัน",
     location: "บริเวณใกล้ร้านน้ำเต้าหู้ Pumpkin&Melone Soy Milk",
@@ -151,11 +152,11 @@ export const nearbyShops: NearbyShop[] = [
     callFirst: "เนื่องจากร้านขายอาหารตามจำนวนที่ทำในแต่ละวัน และเมนูอาจเปลี่ยนแปลงทุกวัน",
     owners: [{ name: "ป้ามน", phone: "0955958887", phoneDisplay: "095-595-8887" }],
     products: [
-      { name: "กับข้าว", price: 0, unit: "เริ่มต้น 40 บาท / ถุง • เมนูเปลี่ยนไปในแต่ละวัน" },
+      { name: "กับข้าว", price: 0, unit: "เริ่มต้น 40 บาท / ถุง • เมนูเปลี่ยนไปในแต่ละวัน", image: "/images/nearby/pa-mon-food.jpg" },
       { name: "น้ำพริกกะปิ", price: 10, unit: "บาท / ถุง" },
-      { name: "ข้าวธรรมดา", price: 0, unit: "3 ถ้วย / 10 บาท" },
+      { name: "ข้าวธรรมดา", price: 0, unit: "3 ถ้วย / 10 บาท", image: "/images/nearby/pa-mon-rice.jpg" },
       { name: "ข้าวหอมมะลิ", price: 0, unit: "3 ถ้วย / 12 บาท" },
-      { name: "ขนมหวาน", price: 0, unit: "เริ่มต้น 10–20 บาท • ราคาขึ้นอยู่กับชนิดของขนม แต่ละวันอาจมีขนมแตกต่างกัน" },
+      { name: "ขนมหวาน", price: 0, unit: "เริ่มต้น 10–20 บาท • ราคาขึ้นอยู่กับชนิดของขนม แต่ละวันอาจมีขนมแตกต่างกัน", image: "/images/nearby/pa-mon-dessert.jpg" },
     ],
     extras: [
       {
@@ -174,14 +175,20 @@ export const nearbyShops: NearbyShop[] = [
     },
     photoSlots: [
       { id: "cart", label: "รถเข็นป้ามน", emoji: "🚚" },
+      { id: "sign", label: "ป้ายร้าน", emoji: "🪧" },
+      { id: "dessert", label: "โต๊ะขนมหวาน", emoji: "🍡" },
+      { id: "fresh", label: "ของสด / กับข้าวถุง", emoji: "🥬" },
       { id: "alms", label: "ชุดใส่บาตร", emoji: "🙏" },
       { id: "food", label: "เมนูอาหาร / กับข้าว", emoji: "🍛" },
       { id: "chili", label: "น้ำพริกกะปิ", emoji: "🌶️" },
-      { id: "rice", label: "ข้าว", emoji: "🍚" },
-      { id: "dessert", label: "โต๊ะขนมหวาน", emoji: "🍡" },
       { id: "daily", label: "เมนูอาหารประจำวัน", emoji: "🥘" },
     ],
-    photos: [],
+    photos: [
+      { src: "/images/nearby/pa-mon-stall-wide.jpg", caption: "รถเข็นป้ามน กับข้าวหลายอย่างทุกเช้า" },
+      { src: "/images/nearby/pa-mon-sign-wide.jpg", caption: "ป้ายร้าน ป้ามน ข้าวแกง" },
+      { src: "/images/nearby/pa-mon-dessert-wide.jpg", caption: "หม้อข้าวและขนมหวานหน้าร้าน" },
+      { src: "/images/nearby/pa-mon-fresh-wide.jpg", caption: "ของสดและกับข้าวถุง สแกนจ่ายได้" },
+    ],
   },
   {
     slug: "wiriya",
