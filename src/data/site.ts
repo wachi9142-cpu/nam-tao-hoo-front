@@ -76,7 +76,7 @@ export const toppings = {
   items: [
     { name: "ลูกเดือย" },
     { name: "สาคูเม็ดใหญ่" },
-    { name: "เม็ดแมงลัก" },
+    { name: "เม็ดแมงลัก", image: "/images/toppings/basil-seed.jpg" },
     { name: "ข้าวบาร์เลย์" },
     { name: "วุ้น", image: "/images/toppings/jelly.jpg" },
   ],
