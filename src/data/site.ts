@@ -45,6 +45,8 @@ export const menu: MenuCategory[] = [
   {
     title: "น้ำเต้าหู้งาดำ",
     emoji: "🖤",
+    image: "/images/menu/black-sesame.jpg",
+    imageCaption: "น้ำเต้าหู้งาดำใส่ถุง ถุงละ 10 บาท",
     items: [
       { name: "น้ำเต้าหู้งาดำไม่ใส่เครื่อง", price: 10 },
       { name: "น้ำเต้าหู้งาดำใส่เครื่อง", price: 12 },
