@@ -68,10 +68,18 @@ export const menu: MenuCategory[] = [
 export const sweetness = ["ไม่ใส่น้ำตาล", "หวานน้อย", "หวานปกติ"];
 
 // add-ins for the soy milk ("ใส่เครื่อง")
+export type Topping = { name: string; image?: string };
+
 export const toppings = {
   title: "🥣 เครื่องน้ำเต้าหู้",
   sub: "เลือกเพิ่มเครื่องได้ตามต้องการ",
-  items: ["ลูกเดือย", "สาคูเม็ดใหญ่", "เม็ดแมงลัก", "ข้าวบาร์เลย์"],
+  items: [
+    { name: "ลูกเดือย" },
+    { name: "สาคูเม็ดใหญ่" },
+    { name: "เม็ดแมงลัก" },
+    { name: "ข้าวบาร์เลย์" },
+    { name: "วุ้น", image: "/images/toppings/jelly.jpg" },
+  ],
   note: "🤍 หมายเหตุ: เครื่องน้ำเต้าหู้บางอย่างอาจมีไม่ทุกวัน เพราะทำตามวัตถุดิบที่มีในแต่ละวัน สามารถสอบถามที่ร้านก่อนได้เลยค่ะ",
 };
 

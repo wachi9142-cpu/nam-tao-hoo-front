@@ -49,11 +49,11 @@ export function Menu() {
           <p className="font-display text-lg font-bold text-cocoa">{toppings.title}</p>
           <p className="text-sm text-cocoa/70">{toppings.sub}</p>
           {/* one photo slot per add-in, so the shop can show what each one looks like */}
-          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {toppings.items.map((t) => (
-              <div key={t}>
-                <AdminPhoto scope="home-toppings" slot={t} label={t} emoji="🥣" aspect="aspect-square" />
-                <p className="mt-1.5 text-center text-sm font-semibold text-pumpkin">{t}</p>
+              <div key={t.name}>
+                <AdminPhoto scope="home-toppings" slot={t.name} label={t.name} emoji="🥣" fallback={t.image} fallbackCaption={t.name} aspect="aspect-square" />
+                <p className="mt-1.5 text-center text-sm font-semibold text-pumpkin">{t.name}</p>
               </div>
             ))}
           </div>
