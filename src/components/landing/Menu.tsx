@@ -1,3 +1,4 @@
+import { AdminPhoto } from "@/components/AdminPhoto";
 import { menu, sweetness } from "@/data/site";
 import { SectionTitle } from "./SectionTitle";
 
@@ -13,6 +14,8 @@ export function Menu() {
               <h3 className="font-display flex items-center gap-2 text-xl font-bold text-sky-deep">
                 <span className="text-2xl">{cat.emoji}</span> {cat.title}
               </h3>
+              {/* photo of the drink — admin fills this in from the page */}
+              <AdminPhoto scope="home-menu" slot={cat.title} label={cat.title} emoji={cat.emoji} className="mt-3" />
               <ul className="mt-4 flex-1 divide-y divide-bean/40">
                 {cat.items.map((it) => (
                   <li key={it.name} className="flex items-start justify-between gap-3 py-3">

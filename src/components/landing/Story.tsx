@@ -1,3 +1,4 @@
+import { AdminPhoto } from "@/components/AdminPhoto";
 import { SectionTitle } from "./SectionTitle";
 
 const photos = [
@@ -23,15 +24,16 @@ export function Story() {
           </p>
         </div>
         <div className="grid grid-cols-3 gap-3">
-          {/* TODO: replace with real photos (public/images/story-*.jpg) */}
           {photos.map((p, i) => (
-            <figure
+            <AdminPhoto
               key={p.label}
-              className={`grid aspect-[3/4] place-items-center rounded-3xl bg-milk text-5xl shadow-md ring-1 ring-bean/60 ${i === 1 ? "mt-8" : ""}`}
-            >
-              {p.emoji}
-              <figcaption className="text-xs text-cocoa/60">{p.label}</figcaption>
-            </figure>
+              scope="home-story"
+              slot={p.label}
+              label={p.label}
+              emoji={p.emoji}
+              aspect="aspect-[3/4]"
+              className={i === 1 ? "mt-8" : ""}
+            />
           ))}
         </div>
       </div>
