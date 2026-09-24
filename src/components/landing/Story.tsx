@@ -23,8 +23,9 @@ export function Story() {
             แต่เป็นสิ่งเล็ก ๆ ที่แม่ตั้งใจทำในทุกเช้า 🥛💛
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-3">
-          {photos.map((p, i) => (
+        {/* only slots that have a photo are shown; the admin also sees empty ones to fill */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {photos.map((p) => (
             <AdminPhoto
               key={p.label}
               scope="home-story"
@@ -33,8 +34,9 @@ export function Story() {
               emoji={p.emoji}
               fallback={p.image}
               fallbackCaption={p.caption}
+              hideWhenEmpty
               aspect="aspect-[3/4]"
-              className={i === 1 ? "mt-8" : ""}
+              className="w-40 sm:w-48"
             />
           ))}
         </div>

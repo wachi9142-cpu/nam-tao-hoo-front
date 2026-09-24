@@ -15,6 +15,8 @@ type Props = {
   /** static photo shipped with the site; an admin upload replaces it */
   fallback?: string;
   fallbackCaption?: string;
+  /** hide the empty placeholder from customers (the admin still sees ＋) */
+  hideWhenEmpty?: boolean;
   /** tailwind aspect class for the frame */
   aspect?: string;
   className?: string;
@@ -22,7 +24,7 @@ type Props = {
 
 // One admin-fillable photo frame. Customers see the photo (or a "รอรูปจริง"
 // placeholder); an admin gets ＋ เพิ่มภาพ / เปลี่ยน / ลบ right where it shows.
-export function AdminPhoto({ scope, slot, label, emoji = "📷", fallback, fallbackCaption, aspect = "aspect-[4/3]", className = "" }: Props) {
+export function AdminPhoto({ scope, slot, label, emoji = "📷", fallback, fallbackCaption, hideWhenEmpty, aspect = "aspect-[4/3]", className = "" }: Props) {
   const { user } = useAuth();
   const isAdmin = user?.role === "admin";
   const [src, setSrc] = useState<string | null>(fallback ?? null);
@@ -61,6 +63,8 @@ export function AdminPhoto({ scope, slot, label, emoji = "📷", fallback, fallb
     setSrc(fallback ?? null);
     setCaption(fallbackCaption ?? "");
   };
+
+  if (!src && !isAdmin && hideWhenEmpty) return null;
 
   return (
     <div className={className}>
