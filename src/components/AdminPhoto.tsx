@@ -12,6 +12,9 @@ type Props = {
   slot: string;
   label: string;
   emoji?: string;
+  /** static photo shipped with the site; an admin upload replaces it */
+  fallback?: string;
+  fallbackCaption?: string;
   /** tailwind aspect class for the frame */
   aspect?: string;
   className?: string;
@@ -19,11 +22,11 @@ type Props = {
 
 // One admin-fillable photo frame. Customers see the photo (or a "รอรูปจริง"
 // placeholder); an admin gets ＋ เพิ่มภาพ / เปลี่ยน / ลบ right where it shows.
-export function AdminPhoto({ scope, slot, label, emoji = "📷", aspect = "aspect-[4/3]", className = "" }: Props) {
+export function AdminPhoto({ scope, slot, label, emoji = "📷", fallback, fallbackCaption, aspect = "aspect-[4/3]", className = "" }: Props) {
   const { user } = useAuth();
   const isAdmin = user?.role === "admin";
-  const [src, setSrc] = useState<string | null>(null);
-  const [caption, setCaption] = useState("");
+  const [src, setSrc] = useState<string | null>(fallback ?? null);
+  const [caption, setCaption] = useState(fallbackCaption ?? "");
   const [busy, setBusy] = useState(false);
   const [open, setOpen] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -31,11 +34,11 @@ export function AdminPhoto({ scope, slot, label, emoji = "📷", aspect = "aspec
   useEffect(() => {
     const id = setTimeout(() => {
       const p = readPhotos(scope)[slot];
-      setSrc(p?.src ?? null);
-      setCaption(p?.caption ?? "");
+      setSrc(p?.src ?? fallback ?? null);
+      setCaption(p?.caption ?? fallbackCaption ?? "");
     }, 0);
     return () => clearTimeout(id);
-  }, [scope, slot]);
+  }, [scope, slot, fallback, fallbackCaption]);
 
   const onFile = async (f?: File) => {
     if (!f || !user) return;
@@ -55,8 +58,8 @@ export function AdminPhoto({ scope, slot, label, emoji = "📷", aspect = "aspec
   const remove = () => {
     if (!confirm("ลบรูปนี้?")) return;
     setPhoto(scope, slot, null);
-    setSrc(null);
-    setCaption("");
+    setSrc(fallback ?? null);
+    setCaption(fallbackCaption ?? "");
   };
 
   return (

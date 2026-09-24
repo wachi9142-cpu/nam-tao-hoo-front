@@ -30,7 +30,7 @@ export const weekHours = [
 ];
 
 export type MenuItem = { name: string; price: number; note?: string; badge?: string };
-export type MenuCategory = { title: string; emoji: string; note?: string; items: MenuItem[] };
+export type MenuCategory = { title: string; emoji: string; note?: string; image?: string; imageCaption?: string; items: MenuItem[] };
 
 export const menu: MenuCategory[] = [
   {
@@ -55,11 +55,19 @@ export const menu: MenuCategory[] = [
     title: "น้ำฟักทอง",
     emoji: "🎃",
     note: "ไม่มีตัวเลือกใส่เครื่อง",
+    image: "/images/menu/pumpkin.jpg",
+    imageCaption: "น้ำฟักทองใส่ถุง ถุงละ 10 บาท",
     items: [{ name: "น้ำฟักทอง", price: 10 }],
   },
 ];
 
 export const sweetness = ["ไม่ใส่น้ำตาล", "หวานน้อย", "หวานปกติ"];
+
+// ready-to-grab bags sitting on the tray at the front of the shop
+export const readyBags = {
+  title: "🛍️ ถุงที่ตักไว้แล้ว หยิบได้เลย",
+  text: "ช่วงเช้าแม่จะตักน้ำเต้าหู้และน้ำฟักทองใส่ถุงเตรียมไว้ ลูกค้าที่รีบสามารถหยิบถุงที่ตักไว้ได้เลย ไม่ต้องรอ",
+};
 
 export type NearbyProduct = { name: string; price: number; unit: string; image?: string };
 export type NearbyPhoto = { src: string; caption: string };
