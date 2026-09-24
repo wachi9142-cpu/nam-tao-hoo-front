@@ -48,11 +48,13 @@ export function Menu() {
         <div className="mt-6 rounded-3xl bg-cream p-6 ring-1 ring-bean/50">
           <p className="font-display text-lg font-bold text-cocoa">{toppings.title}</p>
           <p className="text-sm text-cocoa/70">{toppings.sub}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
+          {/* one photo slot per add-in, so the shop can show what each one looks like */}
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {toppings.items.map((t) => (
-              <span key={t} className="rounded-full bg-milk px-4 py-1.5 text-sm font-semibold text-pumpkin ring-1 ring-honey/60">
-                {t}
-              </span>
+              <div key={t}>
+                <AdminPhoto scope="home-toppings" slot={t} label={t} emoji="🥣" aspect="aspect-square" />
+                <p className="mt-1.5 text-center text-sm font-semibold text-pumpkin">{t}</p>
+              </div>
             ))}
           </div>
           <p className="mt-3 text-xs leading-relaxed text-cocoa/65">{toppings.note}</p>
