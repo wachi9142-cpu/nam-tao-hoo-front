@@ -36,6 +36,8 @@ export const menu: MenuCategory[] = [
   {
     title: "น้ำเต้าหู้",
     emoji: "🥛",
+    image: "/images/menu/soy-milk.jpg",
+    imageCaption: "น้ำเต้าหู้ใส่ถุง ถุงละ 10 บาท",
     items: [
       { name: "น้ำเต้าหู้ไม่ใส่เครื่อง", price: 10, badge: "ขายดี" },
       { name: "น้ำเต้าหู้ใส่เครื่อง", price: 12 },
