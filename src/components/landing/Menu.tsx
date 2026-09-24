@@ -75,13 +75,23 @@ export function Menu() {
           <div className="rounded-3xl bg-leaf/15 p-6 ring-1 ring-leaf/40">
             <p className="font-display text-lg font-bold text-cocoa">{readyBags.title}</p>
             <p className="mt-1 text-sm leading-relaxed text-cocoa/80">{readyBags.text}</p>
-            <AdminPhoto
-              scope="home-menu"
-              slot="ready-bags"
-              label="ถุงที่ตักไว้"
-              emoji="🛍️"
-              className="mt-3"
-            />
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {readyBags.photos.map((p) => (
+                <div key={p.slot}>
+                  <AdminPhoto
+                    scope="home-menu"
+                    slot={`ready-${p.slot}`}
+                    label={p.label}
+                    emoji={p.emoji}
+                    fallback={p.image}
+                    fallbackCaption={p.label}
+                  />
+                  <p className="mt-1.5 text-center text-sm font-semibold text-cocoa/80">
+                    {p.emoji} {p.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col justify-center rounded-3xl border-2 border-dashed border-blush bg-blush/15 p-6 text-center">
             <p className="font-display text-lg font-bold text-cocoa">🏠 ซื้อที่หน้าร้านเท่านั้น</p>

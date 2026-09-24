@@ -87,6 +87,10 @@ export const toppings = {
 export const readyBags = {
   title: "🛍️ ถุงที่ตักไว้แล้ว หยิบได้เลย",
   text: "ช่วงเช้าแม่จะตักน้ำเต้าหู้และน้ำฟักทองใส่ถุงเตรียมไว้ ลูกค้าที่รีบสามารถหยิบถุงที่ตักไว้ได้เลย ไม่ต้องรอ",
+  photos: [
+    { slot: "soy-milk", label: "น้ำเต้าหู้ตักไว้", emoji: "🥛", image: "/images/menu/ready-soy-milk.jpg" },
+    { slot: "pumpkin", label: "น้ำฟักทองตักไว้", emoji: "🎃", image: "/images/menu/ready-pumpkin.jpg" },
+  ],
 };
 
 export type NearbyProduct = { name: string; price: number; unit: string; image?: string };
