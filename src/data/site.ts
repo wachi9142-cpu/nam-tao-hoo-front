@@ -77,7 +77,7 @@ export const toppings = {
     { name: "ลูกเดือย", image: "/images/toppings/job-tears.jpg" },
     { name: "สาคูเม็ดใหญ่" },
     { name: "เม็ดแมงลัก", image: "/images/toppings/basil-seed.jpg" },
-    { name: "ข้าวบาร์เลย์" },
+    { name: "ข้าวบาร์เลย์", image: "/images/toppings/barley.jpg" },
     { name: "วุ้น", image: "/images/toppings/jelly.jpg" },
   ],
   note: "🤍 หมายเหตุ: เครื่องน้ำเต้าหู้บางอย่างอาจมีไม่ทุกวัน เพราะทำตามวัตถุดิบที่มีในแต่ละวัน สามารถสอบถามที่ร้านก่อนได้เลยค่ะ",
