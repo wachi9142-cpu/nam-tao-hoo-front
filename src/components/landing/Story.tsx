@@ -3,7 +3,7 @@ import { SectionTitle } from "./SectionTitle";
 
 const photos = [
   { emoji: "👩‍🍳", label: "แม่" },
-  { emoji: "🫘", label: "เตรียมน้ำเต้าหู้" },
+  { emoji: "🫘", label: "เตรียมน้ำเต้าหู้", image: "/images/story-pot.jpg", caption: "หม้อน้ำเต้าหู้สดใหม่ทุกเช้า" },
   { emoji: "🏠", label: "หน้าร้าน" },
 ];
 
@@ -31,6 +31,8 @@ export function Story() {
               slot={p.label}
               label={p.label}
               emoji={p.emoji}
+              fallback={p.image}
+              fallbackCaption={p.caption}
               aspect="aspect-[3/4]"
               className={i === 1 ? "mt-8" : ""}
             />
