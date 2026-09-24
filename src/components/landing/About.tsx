@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { SteamyGlass } from "./SteamyGlass";
 
 const stats = [
   { value: "ตี 3–4", label: "แม่เริ่มเตรียมทุกวัน" },
@@ -15,11 +16,10 @@ export function About() {
         <span className="animate-float absolute left-6 top-6 text-2xl opacity-60">🥛</span>
         <span className="animate-float absolute bottom-6 left-10 text-2xl opacity-60" style={{ animationDelay: "1.5s", "--r": "-10deg" } as CSSProperties}>🫘</span>
 
-        {/* left: illustration */}
-        <div className="relative mx-auto grid h-56 w-56 place-items-center">
-          <div className="absolute inset-0 rounded-full bg-sky/25 blur-2xl" />
-          <div className="relative text-8xl drop-shadow-lg">🥛</div>
-          <div className="absolute -bottom-2 left-1/2 h-6 w-40 -translate-x-1/2 rounded-full bg-bean/50 blur-md" />
+        {/* left: real photo of the drink, with CSS steam over it */}
+        <div className="relative mx-auto w-48 sm:w-56">
+          <div className="absolute inset-0 -z-10 rounded-full bg-sky/25 blur-2xl" />
+          <SteamyGlass src="/images/soy-milk-glass.jpg" alt="น้ำเต้าหู้ร้อน ๆ หนึ่งแก้ว" rimTop="32%" />
         </div>
 
         {/* center: text */}

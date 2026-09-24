@@ -57,3 +57,45 @@ body {
   50% { transform: translateY(-10px) rotate(var(--r, 0deg)); }
 }
 .animate-float { animation: float 5s ease-in-out infinite; }
+
+/* Steam rising from a hot drink — GPU-friendly (transform + opacity only).
+   Each wisp is a soft blurred column that rises, drifts, widens and fades. */
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0) scaleX(0.7);
+  }
+  18% {
+    opacity: 0.5;
+  }
+  55% {
+    opacity: 0.35;
+    transform: translate3d(calc(var(--drift, 0px) * 0.6), -45%, 0) scaleX(var(--steam-scale, 1.5));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 0px), -105%, 0) scaleX(calc(var(--steam-scale, 1.5) * 1.5));
+  }
+}
+
+.steam-wisp {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(7px);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: steam-rise;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Respect the visitor's motion setting: keep a faint still haze instead */
+@media (prefers-reduced-motion: reduce) {
+  .steam-wisp {
+    animation: none;
+    opacity: 0.25;
+  }
+}
