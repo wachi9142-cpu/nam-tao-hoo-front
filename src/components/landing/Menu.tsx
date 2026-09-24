@@ -1,5 +1,5 @@
 import { AdminPhoto } from "@/components/AdminPhoto";
-import { menu, readyBags, sweetness } from "@/data/site";
+import { menu, readyBags, sweetness, toppings } from "@/data/site";
 import { SectionTitle } from "./SectionTitle";
 
 export function Menu() {
@@ -45,7 +45,20 @@ export function Menu() {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="mt-6 rounded-3xl bg-cream p-6 ring-1 ring-bean/50">
+          <p className="font-display text-lg font-bold text-cocoa">{toppings.title}</p>
+          <p className="text-sm text-cocoa/70">{toppings.sub}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {toppings.items.map((t) => (
+              <span key={t} className="rounded-full bg-milk px-4 py-1.5 text-sm font-semibold text-pumpkin ring-1 ring-honey/60">
+                {t}
+              </span>
+            ))}
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-cocoa/65">{toppings.note}</p>
+        </div>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
           <div className="rounded-3xl bg-cream p-6 ring-1 ring-bean/50">
             <p className="font-display text-lg font-bold text-cocoa">🍬 ระดับความหวาน</p>
             <p className="text-sm text-cocoa/70">ลูกค้าเลือกได้ตามชอบ</p>

@@ -63,6 +63,14 @@ export const menu: MenuCategory[] = [
 
 export const sweetness = ["ไม่ใส่น้ำตาล", "หวานน้อย", "หวานปกติ"];
 
+// add-ins for the soy milk ("ใส่เครื่อง")
+export const toppings = {
+  title: "🥣 เครื่องน้ำเต้าหู้",
+  sub: "เลือกเพิ่มเครื่องได้ตามต้องการ",
+  items: ["ลูกเดือย", "สาคูเม็ดใหญ่", "เม็ดแมงลัก", "ข้าวบาร์เลย์"],
+  note: "🤍 หมายเหตุ: เครื่องน้ำเต้าหู้บางอย่างอาจมีไม่ทุกวัน เพราะทำตามวัตถุดิบที่มีในแต่ละวัน สามารถสอบถามที่ร้านก่อนได้เลยค่ะ",
+};
+
 // ready-to-grab bags sitting on the tray at the front of the shop
 export const readyBags = {
   title: "🛍️ ถุงที่ตักไว้แล้ว หยิบได้เลย",
