@@ -75,7 +75,7 @@ export const toppings = {
   sub: "เลือกเพิ่มเครื่องได้ตามต้องการ",
   items: [
     { name: "ลูกเดือย", image: "/images/toppings/job-tears.jpg" },
-    { name: "สาคูเม็ดใหญ่" },
+    { name: "สาคูเม็ดใหญ่", image: "/images/toppings/sago.jpg" },
     { name: "เม็ดแมงลัก", image: "/images/toppings/basil-seed.jpg" },
     { name: "ข้าวบาร์เลย์", image: "/images/toppings/barley.jpg" },
     { name: "วุ้น", image: "/images/toppings/jelly.jpg" },
