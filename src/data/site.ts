@@ -354,7 +354,7 @@ export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำกระเจี๊ยบ", emoji: "🌺", price: 10, benefit: "รสเปรี้ยวสดชื่น มีสารต้านอนุมูลอิสระจากสารสีธรรมชาติ", image: "/images/herbal/roselle-bottle.jpg", imageFull: "/images/herbal/roselle-bottle-full.jpg" },
   { name: "น้ำอัญชัน", emoji: "🦋", price: 10, benefit: "สีสวย สดชื่น และอัญชันมีสารแอนโทไซยานิน" },
   { name: "น้ำอัญชันมะนาว", emoji: "💜", price: 10, benefit: "สีสวย เปรี้ยวสดชื่น อัญชันผสมมะนาว", image: "/images/herbal/butterfly-pea-lime.jpg", imageFull: "/images/herbal/butterfly-pea-lime-full.jpg" },
-  { name: "น้ำใบเตยหอม", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น" },
+  { name: "น้ำใบเตยหอม", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น", image: "/images/herbal/pandan.jpg", imageFull: "/images/herbal/pandan-full.jpg" },
   { name: "น้ำมะม่วงหาวมะนาวโห่", emoji: "🫐", price: 10, benefit: "รสเปรี้ยวอมหวาน มีสารต้านอนุมูลอิสระ", image: "/images/herbal/karanda.jpg", imageFull: "/images/herbal/karanda-full.jpg" },
   { name: "น้ำเสาวรส", emoji: "🟣", price: 10, benefit: "หอมเปรี้ยว มีวิตามินและสารต้านอนุมูลอิสระ", image: "/images/herbal/passion-fruit.jpg", imageFull: "/images/herbal/passion-fruit-full.jpg" },
   { name: "น้ำผึ้งมะนาว", emoji: "🍋", price: 10, benefit: "เปรี้ยวหวานสดชื่น เหมาะสำหรับดื่มเพิ่มความสดชื่น", image: "/images/herbal/honey-lime.jpg", imageFull: "/images/herbal/honey-lime-full.jpg" },
