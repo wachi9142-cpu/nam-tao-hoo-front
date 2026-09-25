@@ -363,7 +363,7 @@ export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำมะตูม", emoji: "🟠", price: 10, benefit: "หอมอุ่น ช่วยย่อย" },
   { name: "น้ำขิง", emoji: "🫚", price: 10, benefit: "กลิ่นเผ็ดอุ่น ๆ มีสารสำคัญจากขิง เช่น gingerols", image: "/images/herbal/ginger-bottle.jpg", imageFull: "/images/herbal/ginger-bottle-full.jpg" },
   { name: "น้ำใบบัวบก", emoji: "🍃", price: 10, benefit: "เย็นสบาย ดื่มง่าย", image: "/images/herbal/gotu-kola.jpg", imageFull: "/images/herbal/gotu-kola-full.jpg" },
-  { name: "น้ำตะไคร้ใบเตยหอม", emoji: "🌱", price: 10, benefit: "หอมตะไคร้ผสมใบเตย ดื่มแล้วสดชื่น", image: "/images/herbal/lemongrass-pandan.jpg", imageFull: "/images/herbal/lemongrass-pandan-full.jpg" },
+  { name: "น้ำตะไคร้ใบเตยหอม", emoji: "🌱", price: 10, benefit: "หอมตะไคร้ผสมใบเตย ดื่มแล้วสดชื่น" },
   { name: "น้ำถั่วห้าสี", emoji: "🫘", price: 10, benefit: "ถั่ว 5 ชนิด หอมมัน อิ่มท้อง" },
   { name: "น้ำสามสหาย", emoji: "🧃", price: 10, benefit: "มะตูม + พุทรา + กระเจี๊ยบ หอมหวานเปรี้ยวลงตัว", image: "/images/herbal/three-friends.jpg", imageFull: "/images/herbal/three-friends-full.jpg" },
 ];
