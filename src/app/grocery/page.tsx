@@ -38,7 +38,7 @@ export default function GroceryPage() {
               <p className="mt-3 rounded-2xl bg-cream px-3 py-2 text-sm text-cocoa/60 ring-1 ring-dashed ring-bean/60">
                 🌱 ในอนาคตอาจมีจำหน่าย
               </p>
-            ) : (
+            ) : cat.items.length === 0 ? null : (
               <ul className="mt-3 space-y-1.5 text-sm text-cocoa/85">
                 {cat.items.map((it) => (
                   <li key={it} className="flex items-start gap-2">
