@@ -33,13 +33,19 @@ export default function GroceryPage() {
             <h3 className="font-display flex items-center gap-2 text-lg font-bold text-sky-deep md:text-xl">
               <span className="text-2xl">{cat.emoji}</span> {cat.title}
             </h3>
-            <ul className="mt-3 space-y-1.5 text-sm text-cocoa/85">
-              {cat.items.map((it) => (
-                <li key={it} className="flex items-start gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-honey" /> {it}
-                </li>
-              ))}
-            </ul>
+            {cat.comingSoon ? (
+              <p className="mt-3 rounded-2xl bg-cream px-3 py-2 text-sm text-cocoa/60 ring-1 ring-dashed ring-bean/60">
+                🌱 ในอนาคตอาจมีจำหน่าย
+              </p>
+            ) : (
+              <ul className="mt-3 space-y-1.5 text-sm text-cocoa/85">
+                {cat.items.map((it) => (
+                  <li key={it} className="flex items-start gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-honey" /> {it}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>

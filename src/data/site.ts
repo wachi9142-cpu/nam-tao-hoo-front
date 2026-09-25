@@ -316,7 +316,8 @@ export type CheckIn = { id: string; user: string; avatar: string; message: strin
 export const seedCheckIns: CheckIn[] = [];
 
 // ---------- วิของชำ ----------
-export type GroceryCategory = { title: string; emoji: string; items: string[] };
+// comingSoon: หมวดที่ยังไม่ได้ขาย — เก็บโครงไว้ แต่ไม่แสดงเป็นสินค้าที่สั่งซื้อได้
+export type GroceryCategory = { title: string; emoji: string; items: string[]; comingSoon?: boolean };
 
 export const grocery: GroceryCategory[] = [
   { title: "ของกินของใช้", emoji: "🍜", items: ["บะหมี่กึ่งสำเร็จรูป", "ข้าวสาร", "ไข่ไก่", "น้ำปลา / ซีอิ๊ว / น้ำมัน", "น้ำตาล / เกลือ", "ขนมขบเคี้ยว"] },
@@ -324,7 +325,7 @@ export const grocery: GroceryCategory[] = [
   { title: "สุขภาพ / ความงาม", emoji: "💊", items: ["ยาสามัญประจำบ้าน", "สบู่ / แชมพู", "ยาสีฟัน / แปรงสีฟัน", "ผ้าอนามัย", "ครีมกันแดด"] },
   { title: "IT", emoji: "🔌", items: ["สายชาร์จ", "หัวชาร์จ", "หูฟัง", "ถ่านก้อน", "ซิม / เติมเงิน"] },
   { title: "สัตว์เลี้ยง", emoji: "🐱", items: ["อาหารแมว", "อาหารสุนัข", "ทรายแมว", "ขนมสัตว์เลี้ยง"] },
-  { title: "ผักผลไม้", emoji: "🥬", items: ["ผักสดตามฤดู", "ผลไม้ตามฤดู", "พริก / กระเทียม / หอม", "มะนาว"] },
+  { title: "ผักผลไม้", emoji: "🥬", items: [], comingSoon: true },
   { title: "ของกระป๋อง", emoji: "🥫", items: ["ปลากระป๋อง", "ผลไม้กระป๋อง", "ซุป / อาหารสำเร็จรูป"] },
   { title: "น้ำแข็ง & เครื่องดื่ม", emoji: "🧊", items: ["น้ำแข็ง", "น้ำดื่ม", "น้ำอัดลม", "นมกล่อง", "กาแฟซอง"] },
 ];
