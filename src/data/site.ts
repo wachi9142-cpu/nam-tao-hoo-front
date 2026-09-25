@@ -352,7 +352,7 @@ export type HerbalDrink = { name: string; emoji: string; price: number; benefit:
 export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำเก๊กฮวย", emoji: "🌼", price: 10, benefit: "ดื่มง่าย หอมสดชื่น ช่วยเติมความสดชื่น", image: "/images/herbal/chrysanthemum.jpg", imageFull: "/images/herbal/chrysanthemum-full.jpg" },
   { name: "น้ำกระเจี๊ยบ", emoji: "🌺", price: 10, benefit: "รสเปรี้ยวสดชื่น มีสารต้านอนุมูลอิสระจากสารสีธรรมชาติ", image: "/images/herbal/roselle-bottle.jpg", imageFull: "/images/herbal/roselle-bottle-full.jpg" },
-  { name: "น้ำอัญชัน", emoji: "🦋", price: 10, benefit: "สีสวย สดชื่น และอัญชันมีสารแอนโทไซยานิน" },
+  { name: "น้ำอัญชัน", emoji: "🦋", price: 10, benefit: "สีสวย สดชื่น และอัญชันมีสารแอนโทไซยานิน", image: "/images/herbal/butterfly-pea.jpg", imageFull: "/images/herbal/butterfly-pea-full.jpg" },
   { name: "น้ำอัญชันมะนาว", emoji: "💜", price: 10, benefit: "สีสวย เปรี้ยวสดชื่น อัญชันผสมมะนาว", image: "/images/herbal/butterfly-pea-lime.jpg", imageFull: "/images/herbal/butterfly-pea-lime-full.jpg" },
   { name: "น้ำใบเตยหอม", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น", image: "/images/herbal/pandan.jpg", imageFull: "/images/herbal/pandan-full.jpg" },
   { name: "น้ำมะม่วงหาวมะนาวโห่", emoji: "🫐", price: 10, benefit: "รสเปรี้ยวอมหวาน มีสารต้านอนุมูลอิสระ", image: "/images/herbal/karanda.jpg", imageFull: "/images/herbal/karanda-full.jpg" },
