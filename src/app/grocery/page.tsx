@@ -33,6 +33,7 @@ export default function GroceryPage() {
             <h3 className="font-display flex items-center gap-2 text-lg font-bold text-sky-deep md:text-xl">
               <span className="text-2xl">{cat.emoji}</span> {cat.title}
             </h3>
+            {cat.sub && <p className="mt-1 text-xs leading-relaxed text-cocoa/65">{cat.sub}</p>}
             {cat.comingSoon ? (
               <p className="mt-3 rounded-2xl bg-cream px-3 py-2 text-sm text-cocoa/60 ring-1 ring-dashed ring-bean/60">
                 🌱 ในอนาคตอาจมีจำหน่าย
@@ -46,6 +47,7 @@ export default function GroceryPage() {
                 ))}
               </ul>
             )}
+            {cat.note && <p className="mt-3 text-[11px] leading-relaxed text-cocoa/55">🏠 {cat.note}</p>}
           </div>
         ))}
       </div>
