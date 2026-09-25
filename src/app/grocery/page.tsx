@@ -47,7 +47,24 @@ export default function GroceryPage() {
                 ))}
               </ul>
             )}
-            {cat.note && <p className="mt-3 text-[11px] leading-relaxed text-cocoa/55">🏠 {cat.note}</p>}
+            {/* หมวดย่อย: พับไว้ก่อน ไม่ให้รายการยาวเกินไป */}
+            {cat.groups && (
+              <details className="group mt-3 rounded-2xl bg-milk px-3 py-2 ring-1 ring-bean/50">
+                <summary className="cursor-pointer list-none text-xs font-semibold text-sky-deep marker:hidden">
+                  <span className="group-open:hidden">▾ ดูรายการทั้งหมด</span>
+                  <span className="hidden group-open:inline">▴ ย่อรายการ</span>
+                </summary>
+                <div className="mt-2 space-y-2">
+                  {cat.groups.map((g) => (
+                    <div key={g.title}>
+                      <p className="text-[11px] font-semibold text-cocoa/70">{g.title}</p>
+                      <p className="text-xs leading-relaxed text-cocoa/75">{g.items.join(" · ")}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
+            {cat.note && <p className="mt-3 text-[11px] leading-relaxed text-cocoa/55">{cat.note}</p>}
           </div>
         ))}
       </div>
