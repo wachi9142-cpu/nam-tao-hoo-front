@@ -244,10 +244,6 @@ export const nearbyShops: NearbyShop[] = [
       { name: "คุณต๋อง", phone: "0652325188", phoneDisplay: "065-232-5188" },
       { name: "คุณนิ", phone: "0991017429", phoneDisplay: "099-101-7429" },
     ],
-    seedReviews: [
-      { id: "w1", user: "ฟ่าง", avatar: "🐱", rating: 5, text: "หมูปิ้งหอมมาก ตอนเช้าแวะซื้อก่อนออกไปทำงาน อร่อยดีค่ะ", date: "2026-09-18", likes: 12, checkedIn: true },
-      { id: "w2", user: "ลูกค้าหน้าร้าน", avatar: "🧑", rating: 4, text: "หมูนุ่ม ข้าวเหนียวร้อน ๆ ราคาไม่แพง", date: "2026-09-12", likes: 5 },
-    ],
     services: [
       {
         title: "เครื่องซักผ้าหยอดเหรียญ",
@@ -308,54 +304,16 @@ export type Review = {
   reply?: OwnerReply;
 };
 
-export const seedReviews: Review[] = [
-  {
-    id: "r1",
-    user: "คุณลูกค้า A",
-    avatar: "🐱",
-    rating: 5,
-    text: "น้ำเต้าหู้หอมมากกก กินตอนเช้าคือดีเลย",
-    date: "2026-09-18",
-    likes: 12,
-    comments: [{ user: "ร้าน", text: "ขอบคุณค่า มาอีกนะคะ 💛" }],
-  },
-  {
-    id: "r2",
-    user: "พี่ต้น",
-    avatar: "🧑",
-    rating: 5,
-    text: "ใส่เครื่องพิเศษคือที่สุด งาดำก็หอม ต้องมาก่อน 7 โมงไม่งั้นหมด",
-    date: "2026-09-15",
-    likes: 8,
-    comments: [],
-  },
-  {
-    id: "r3",
-    user: "ป้าเล็ก",
-    avatar: "👵",
-    rating: 4,
-    text: "รสชาติเหมือนน้ำเต้าหู้สมัยก่อน กินแล้วนึกถึงบ้าน ซื้อฝากหลานทุกครั้ง",
-    date: "2026-09-10",
-    likes: 5,
-    comments: [],
-  },
-];
+// No seeded reviews — real customer reviews only
+export const seedReviews: Review[] = [];
 
 export type Photo = { id: string; user: string; caption: string; rating: number; emoji: string; src?: string; date: string };
 
-export const seedPhotos: Photo[] = [
-  { id: "p1", user: "Nana", caption: "น้ำเต้าหู้ร้อน ๆ ตอนเช้า", rating: 5, emoji: "🥛", date: "2026-09-18" },
-  { id: "p2", user: "Beam", caption: "หน้าร้านวันนี้", rating: 5, emoji: "🏠", date: "2026-09-17" },
-  { id: "p3", user: "Mook", caption: "น้ำฟักทองหวานธรรมชาติ", rating: 4, emoji: "🎃", date: "2026-09-16" },
-  { id: "p4", user: "Ploy", caption: "มากับเพื่อน ๆ", rating: 5, emoji: "👭", date: "2026-09-14" },
-];
+export const seedPhotos: Photo[] = [];
 
 export type CheckIn = { id: string; user: string; avatar: string; message: string; date: string; emoji: string };
 
-export const seedCheckIns: CheckIn[] = [
-  { id: "c1", user: "Nana", avatar: "🐱", message: "แวะเติมพลังตอนเช้า 🥛🐱", date: "2026-09-18T06:40:00", emoji: "🥛" },
-  { id: "c2", user: "Beam", avatar: "🧑", message: "มาซื้อฝากที่ออฟฟิศ", date: "2026-09-18T07:15:00", emoji: "🛍️" },
-];
+export const seedCheckIns: CheckIn[] = [];
 
 // ---------- วิของชำ ----------
 export type GroceryCategory = { title: string; emoji: string; items: string[] };

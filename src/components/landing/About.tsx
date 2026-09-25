@@ -4,7 +4,7 @@ import { SteamyGlass } from "./SteamyGlass";
 
 const stats = [
   { value: "ตี 3–4", label: "แม่เริ่มเตรียมทุกวัน" },
-  { value: "4.9★", label: "คะแนนรีวิวเฉลี่ย" },
+  { value: "05:30", label: "เริ่มขายทุกเช้า" },
   { value: "จ–ส", label: "เปิดทุกวัน ยกเว้นอาทิตย์" },
 ];
 
