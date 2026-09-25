@@ -357,7 +357,7 @@ export const herbalDrinks: HerbalDrink[] = [
   { name: "น้ำใบเตยหอม", emoji: "🌿", price: 10, benefit: "หอมละมุน ดื่มง่าย ให้ความสดชื่น" },
   { name: "น้ำมะม่วงหาวมะนาวโห่", emoji: "🫐", price: 10, benefit: "รสเปรี้ยวอมหวาน มีสารต้านอนุมูลอิสระ", image: "/images/herbal/karanda.jpg", imageFull: "/images/herbal/karanda-full.jpg" },
   { name: "น้ำเสาวรส", emoji: "🟣", price: 10, benefit: "หอมเปรี้ยว มีวิตามินและสารต้านอนุมูลอิสระ", image: "/images/herbal/passion-fruit.jpg", imageFull: "/images/herbal/passion-fruit-full.jpg" },
-  { name: "น้ำผึ้งมะนาว", emoji: "🍋", price: 10, benefit: "เปรี้ยวหวานสดชื่น เหมาะสำหรับดื่มเพิ่มความสดชื่น" },
+  { name: "น้ำผึ้งมะนาว", emoji: "🍋", price: 10, benefit: "เปรี้ยวหวานสดชื่น เหมาะสำหรับดื่มเพิ่มความสดชื่น", image: "/images/herbal/honey-lime.jpg", imageFull: "/images/herbal/honey-lime-full.jpg" },
   { name: "น้ำเสาวรสน้ำผึ้งมะนาว", emoji: "🍯", price: 10, benefit: "หอมหวาน สดชื่น" },
   { name: "น้ำลำไย", emoji: "🟤", price: 10, benefit: "หวานหอม บำรุงกำลัง", image: "/images/herbal/longan.jpg", imageFull: "/images/herbal/longan-full.jpg" },
   { name: "น้ำมะตูม", emoji: "🟠", price: 10, benefit: "หอมอุ่น ช่วยย่อย" },
